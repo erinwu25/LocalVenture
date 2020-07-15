@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8DFFFFFF"
+    android:backgroundTint="#95FFFFFF"
+    android:backgroundTintMode="add"
+    tools:context=".fragments.ProfileFragment">
+
+    <TextView
+        android:id="@+id/tvProfileName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_toEndOf="@+id/imageView3"
+        android:text="Name"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvProfileUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvProfileName"
+        android:layout_alignStart="@+id/tvProfileName"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="30dp"
+        android:text="@username" />
+
+    <TextView
+        android:id="@+id/tvProfileRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvProfileUsername"
+        android:layout_alignStart="@+id/tvProfileUsername"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="15dp"
+        android:text="Rating"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/tvProfileLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvProfileRating"
+        android:layout_alignStart="@+id/imageView2"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:text="Location"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/tvProfileBioTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvProfileLocation"
+        android:layout_alignStart="@+id/tvProfileLocation"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="20dp"
+        android:text="About Me"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/tvProfileBio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvProfileBioTitle"
+        android:layout_alignStart="@+id/tvProfileBioTitle"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="10dp"
+        android:text="blah blah blah"
+        android:textColor="#B0171616" />
+
+    <TextView
+        android:id="@+id/tvProfileEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvProfileBio"
+        android:layout_alignStart="@+id/tvProfileBio"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="40dp"
+        android:text="Contact"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/btnToReviews"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvProfileReviewsTitle"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="50dp"
+        android:text="See Reviews" />
+
+    <ImageButton
+        android:id="@+id/btnEditProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvProfileEmail"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="50dp"
+        android:background="#22FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:src="@android:drawable/ic_menu_edit" />
+
+    <TextView
+        android:id="@+id/tvEditProfileTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/btnEditProfile"
+        android:layout_alignBottom="@+id/btnEditProfile"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="0dp"
+        android:layout_toStartOf="@+id/btnEditProfile"
+        android:text="Edit Profile" />
+
+    <TextView
+        android:id="@+id/tvProfileReviewsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvEditProfileTitle"
+        android:layout_alignStart="@+id/tvProfileEmail"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="10dp"
+        android:text="Reviews"
+        android:textColor="#000000" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:src="@android:drawable/ic_menu_compass" />
+
+</RelativeLayout>

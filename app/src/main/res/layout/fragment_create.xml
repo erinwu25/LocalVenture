@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.CreateFragment">
+
+    <TextView
+        android:id="@+id/tvComposeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="170dp"
+        android:text="Name" />
+
+    <EditText
+        android:id="@+id/etComposeBlurb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvComposeRating"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="30dp"
+        android:ems="10"
+        android:hint="Blurb"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/tvComposeRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvComposeLocation"
+        android:layout_alignStart="@+id/tvComposeName"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="15dp"
+        android:text="Rating" />
+
+    <TextView
+        android:id="@+id/tvComposeEmailTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etComposeBlurb"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="66dp"
+        android:text="Email:" />
+
+    <TextView
+        android:id="@+id/tvComposeEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvComposeEmailTitle"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/tvComposeEmailTitle"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tvComposeBlurbTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvComposeRating"
+        android:layout_alignStart="@+id/etComposeBlurb"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="30dp"
+        android:text="A blurb about the adventures you offer" />
+
+    <TextView
+        android:id="@+id/tvComposeAvailabilityTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvComposeEmailTitle"
+        android:layout_alignStart="@+id/tvComposeEmailTitle"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="50dp"
+        android:text="Availability" />
+
+    <EditText
+        android:id="@+id/etComposeAvailability"
+        android:layout_width="263dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvComposeAvailabilityTitle"
+        android:layout_alignStart="@+id/tvComposeAvailabilityTitle"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:ems="10"
+        android:hint="MM/DD/YYYY - MM/DD/YYYY"
+        android:inputType="date" />
+
+    <Button
+        android:id="@+id/btnComposeSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etComposeAvailability"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="Submit!" />
+
+    <ImageView
+        android:id="@+id/ivComposeProfileImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvComposeName"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="70dp"
+        android:layout_toStartOf="@+id/tvComposeName"
+        android:src="@android:drawable/editbox_dropdown_dark_frame" />
+
+    <TextView
+        android:id="@+id/tvComposeLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvComposeName"
+        android:layout_alignStart="@+id/tvComposeName"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="15dp"
+        android:text="Location" />
+
+</RelativeLayout>
