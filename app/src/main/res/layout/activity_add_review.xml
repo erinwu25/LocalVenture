@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddReview">
+
+    <TextView
+        android:id="@+id/tvAddReviewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:text="Add a review for"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="49dp" />
+
+    <RadioGroup
+        android:id="@+id/rgRatingGroup"
+        android:layout_width="312dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/tvAddReviewTitle"
+        android:layout_alignStart="@+id/tvAddReviewTitle"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="50dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="1" />
+
+        <RadioButton
+            android:id="@+id/rb2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="2" />
+
+        <RadioButton
+            android:id="@+id/rb3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="3" />
+
+        <RadioButton
+            android:id="@+id/rb4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="4" />
+
+        <RadioButton
+            android:id="@+id/rb5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="5" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvAddReviewRatingTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvAddReviewTitle"
+        android:layout_alignStart="@+id/rgRatingGroup"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="15dp"
+        android:text="Rating out of 5 (5 being the best)"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/tvAddRatingDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rgRatingGroup"
+        android:layout_alignStart="@+id/tvAddReviewTitle"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="20dp"
+        android:text="Describe your experience with this guide"
+        android:textColor="#000000" />
+
+    <EditText
+        android:id="@+id/etAddReviewContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvAddRatingDescription"
+        android:layout_alignStart="@+id/tvAddRatingDescription"
+        android:layout_alignEnd="@+id/rgRatingGroup"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="0dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Your review"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/btnAddReviewSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etAddReviewContent"
+        android:layout_alignStart="@+id/etAddReviewContent"
+        android:layout_alignEnd="@+id/etAddReviewContent"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="100dp"
+        android:text="Submit" />
+</RelativeLayout>

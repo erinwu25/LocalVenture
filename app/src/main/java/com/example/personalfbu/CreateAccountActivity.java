@@ -2,6 +2,7 @@ package com.example.personalfbu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -39,6 +40,8 @@ public class CreateAccountActivity extends AppCompatActivity {
                 String password = etCreatePassword.getText().toString();
                 String email = etCreateEmail.getText().toString();
                 createAccount(username, email, password);
+                Intent toEditProfile = new Intent(CreateAccountActivity.this, EditProfileActivity.class);
+                startActivity(toEditProfile);
             }
         });
 
@@ -50,8 +53,8 @@ public class CreateAccountActivity extends AppCompatActivity {
         // set core properties
         user.setUsername(username);
         user.setPassword(password);
-        user.put("email", email);
-
+        user.put("emailAddress", email);
+        user.setEmail(email);
         // invoke signup in background
         user.signUpInBackground(new SignUpCallback() {
             @Override
@@ -66,7 +69,6 @@ public class CreateAccountActivity extends AppCompatActivity {
                 }
             }
         });
-        finish();
 
     }
 }

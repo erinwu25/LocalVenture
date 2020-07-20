@@ -13,7 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ViewReviewsActivity"></activity>
+        <activity android:name=".AddReview"></activity>
+        <activity android:name=".EditListingActivity" />
+        <activity android:name=".MyListings" />
+        <activity android:name=".ListingDetails" />
+        <activity android:name=".ViewReviewsActivity" />
         <activity android:name=".EditProfileActivity" />
         <activity android:name=".CreateAccountActivity" />
 

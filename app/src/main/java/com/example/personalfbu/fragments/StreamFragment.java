@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,15 +31,11 @@ public class StreamFragment extends Fragment {
     private ListingAdapter adapter;
     private List<Listing> listingList;
 
-
-    public StreamFragment() {
-        // Required empty public constructor
-    }
-
+    // Required empty public constructor
+    public StreamFragment() {}
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_stream, container, false);
     }
@@ -60,6 +57,10 @@ public class StreamFragment extends Fragment {
         // set layout manager on recycler view
         rvStream.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        // dividers between recycler view items
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvStream.getContext(), LinearLayoutManager.VERTICAL);
+        rvStream.addItemDecoration(dividerItemDecoration);
+
         // query listings
         queryListings();
     }
@@ -67,12 +68,16 @@ public class StreamFragment extends Fragment {
     private void queryListings() {
         // specify which class to query
         ParseQuery<Listing> query = ParseQuery.getQuery(Listing.class);
+
         // include data referred by user key
         query.include(Listing.KEY_USER);
+
         // Limit query to last 20 listings
         query.setLimit(20);
+
         // order listings by creation date descending
         query.addDescendingOrder(Listing.KEY_CREATED_KEY);
+
         // start an asynchronous call for posts
         query.findInBackground(new FindCallback<Listing>() {
             @Override

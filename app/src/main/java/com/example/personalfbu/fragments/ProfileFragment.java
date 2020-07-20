@@ -15,12 +15,16 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.personalfbu.EditProfileActivity;
+import com.example.personalfbu.MyListings;
 import com.example.personalfbu.R;
 import com.example.personalfbu.ViewReviewsActivity;
 import com.parse.ParseUser;
 
 public class ProfileFragment extends Fragment {
 
+    TextView tvProfileName, tvProfileUsername, tvProfileRating, tvProfileLocation, tvProfileBio, tvProfileEmail;
+    Button btnToReviews, btnMyListings;
+    ImageButton btnEditProfile;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -37,10 +41,6 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TextView tvProfileName, tvProfileUsername, tvProfileRating, tvProfileLocation, tvProfileBio, tvProfileEmail;
-        Button btnToReviews;
-        ImageButton btnEditProfile;
-
         // find element in view
         tvProfileName = view.findViewById(R.id.tvProfileName);
         tvProfileUsername = view.findViewById(R.id.tvProfileUsername);
@@ -50,9 +50,10 @@ public class ProfileFragment extends Fragment {
         tvProfileEmail = view.findViewById(R.id.tvProfileEmail);
         btnEditProfile = view.findViewById(R.id.btnEditProfile);
         btnToReviews = view.findViewById(R.id.btnToReviews);
+        btnMyListings = view.findViewById(R.id.btnMyListings);
 
         // get current user
-        ParseUser currentUser = ParseUser.getCurrentUser();
+        final ParseUser currentUser = ParseUser.getCurrentUser();
 
         // populate fields
         String name = currentUser.getString("Name");
@@ -80,19 +81,46 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
                 // navigate to edit profile activity
                 Intent toEditProfile = new Intent(getContext(), EditProfileActivity.class);
-                startActivity(toEditProfile);
+                startActivityForResult(toEditProfile, 25);
             }
         });
+
 
         btnToReviews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // navigate to reviews activity
                 Intent toViewReviews = new Intent(getContext(), ViewReviewsActivity.class);
+                Bundle toReviewUser = new Bundle();
+                toReviewUser.putParcelable("toUser", currentUser);
+                toViewReviews.putExtras(toReviewUser);
                 startActivity(toViewReviews);
             }
         });
 
+        btnMyListings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // navigate to my listings
+                Intent toMyListings = new Intent(getContext(), MyListings.class);
+                startActivity(toMyListings);
+            }
+        });
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // check if request code is the same as result code
+        if(requestCode == 25) {
+            // get string extras and set textviews
+                tvProfileName.setText(data.getStringExtra("name"));
+                tvProfileLocation.setText(data.getStringExtra("location"));
+                tvProfileBio.setText(data.getStringExtra("bio"));
+                tvProfileEmail.setText(data.getStringExtra("email"));
+
+        }
     }
 }

@@ -17,7 +17,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
-        android:layout_toEndOf="@+id/imageView3"
+        android:layout_toEndOf="@+id/ivProfileImg"
         android:text="Name"
         android:textColor="#000000"
         android:textSize="18sp" />
@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvProfileRating"
-        android:layout_alignStart="@+id/imageView2"
+        android:layout_alignStart="@id/ivProfileImg"
         android:layout_alignParentStart="true"
         android:layout_marginStart="50dp"
         android:layout_marginTop="30dp"
@@ -138,7 +138,7 @@
         android:textColor="#000000" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/ivProfileImg"
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_alignParentStart="true"
@@ -146,5 +146,28 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
         android:src="@android:drawable/ic_menu_compass" />
+
+    <TextView
+        android:id="@+id/tvMyListingsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnToReviews"
+        android:layout_alignStart="@+id/btnToReviews"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="20dp"
+        android:text="My Listings"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/btnMyListings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvMyListingsTitle"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:text="See My Listings" />
 
 </RelativeLayout>

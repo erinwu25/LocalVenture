@@ -6,18 +6,33 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.personalfbu.Listing;
 import com.example.personalfbu.R;
+import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 public class CreateFragment extends Fragment {
 
+    private final String TAG = "CreateFragment";
+    TextView tvComposeName;
+    TextView tvComposeRating;
+    ImageView ivComposeProfileImg;
+    EditText etComposeBlurb;
+    TextView tvComposeEmail;
+    EditText etComposeAvailability;
+    TextView tvComposeLocation;
+    Button btnComposeSubmit;
 
     public CreateFragment() {
         // Required empty public constructor
@@ -39,16 +54,8 @@ public class CreateFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TextView tvComposeName;
-        TextView tvComposeRating;
-        ImageView ivComposeProfileImg;
-        EditText etComposeBlurb;
-        TextView tvComposeEmail;
-        EditText etComposeAvailability;
-        TextView tvComposeLocation;
-
         // get current user to populate some fields
-        ParseUser currentUser = ParseUser.getCurrentUser();
+        final ParseUser currentUser = ParseUser.getCurrentUser();
 
         // find elements in view
         tvComposeName = view.findViewById(R.id.tvComposeName);
@@ -56,8 +63,9 @@ public class CreateFragment extends Fragment {
         ivComposeProfileImg = view.findViewById(R.id.ivComposeProfileImg);
         etComposeBlurb = view.findViewById(R.id.etComposeBlurb);
         tvComposeEmail = view.findViewById(R.id.tvComposeEmail);
-        etComposeAvailability = view.findViewById(R.id.etCreateEmail);
+        etComposeAvailability = view.findViewById(R.id.etComposeAvailability);
         tvComposeLocation = view.findViewById(R.id.tvComposeLocation);
+        btnComposeSubmit = view.findViewById(R.id.btnComposeSubmit);
 
         // populate elements
         tvComposeName.setText(currentUser.getString("Name"));
@@ -71,5 +79,44 @@ public class CreateFragment extends Fragment {
         tvComposeEmail.setText(currentUser.getEmail());
         tvComposeLocation.setText("Area: "+currentUser.getString("location"));
 
+        // Click listener for submit
+        btnComposeSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String blurb = etComposeBlurb.getText().toString();
+                if (blurb.isEmpty()) {
+                    Toast.makeText(getContext(), "Blurb cannot be empty", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                String availability = etComposeAvailability.getText().toString();
+                if (availability.isEmpty()) {
+                    Toast.makeText(getContext(), "Please add your availability", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                saveListing(currentUser, blurb, availability);
+            }
+        });
+    }
+
+    private void saveListing(ParseUser currentUser, String blurb, String availability) {
+        Listing newListing = new Listing();
+        newListing.setUser(currentUser);
+        newListing.setAvailability(availability);
+        newListing.setBlurb(blurb);
+        newListing.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if( e != null) {
+                    Log.e(TAG, "error while saving", e);
+                    Toast.makeText(getContext(), "Error while saving", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    // clear fields after posting
+                    Toast.makeText(getContext(), "Successfully posted!", Toast.LENGTH_SHORT).show();
+                    etComposeAvailability.setText("");
+                    etComposeBlurb.setText("");
+                }
+            }
+        });
     }
 }
