@@ -55,9 +55,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/tvFromUserName"
-        android:layout_marginStart="189dp"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="0dp"
-        android:layout_toEndOf="@+id/tvFromUserName"
+        android:layout_marginEnd="20dp"
         android:text="Date"
         android:textColor="#000000" />
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package com.example.personalfbu;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,7 +65,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
             tvFromUserName.setText(review.getFromUser().getString("Name"));
             tvFromUserRating.setText(String.valueOf(review.getRating()) + "/5");
             tvFromUserContent.setText(review.getReviewContent());
-            tvFromUserDate.setText(ListingDetails.getRelativeTimeAgo(review.getDate().toString()));
+            tvFromUserDate.setText(ListingDetails.getRelativeTimeAgo(review.getWhenCreated().toString()));
 
         }
     }

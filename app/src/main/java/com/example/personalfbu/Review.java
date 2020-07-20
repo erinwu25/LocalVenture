@@ -20,7 +20,7 @@ public class Review extends ParseObject {
     public ParseUser getToUser() { return getParseUser(KEY_toUser); }
     public Number getRating() { return getNumber(KEY_Rating); }
     public String getReviewContent() { return getString(KEY_Content); }
-    public Date getDate() { return getDate(KEY_createdAt); }
+    public Date getWhenCreated() { return getCreatedAt(); }
 
     public void setFromUser(ParseUser fromUser) { put(KEY_fromUser, fromUser); }
     public void setToUser(ParseUser toUser) { put(KEY_toUser, toUser); }
