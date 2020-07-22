@@ -10,9 +10,12 @@ import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.parse.Parse;
+import com.parse.ParseFile;
 import com.parse.ParseUser;
 
 import org.parceler.Parcels;
@@ -21,12 +24,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
-public class ListingDetails extends AppCompatActivity {
+public class ListingDetails extends AppCompatActivity implements ConfirmDeleteListing.ConfirmDeleteListingListener{
 
     TextView tvDetailsName, tvDetailsRating, tvDetailsBlurb, tvDetailsBio, tvDetailsAvailability, tvDetailsLocation, tvDetailsContact, tvDetailsDate;
-    Button btnDetailsViewReviews, btnDetailsEdit, btnAddReview;
+    Button btnDetailsViewReviews, btnDetailsEdit, btnAddReview, btnDetailsDelete;
     Listing listing;
     Number rating;
+    ImageView ivDetailsImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,8 @@ public class ListingDetails extends AppCompatActivity {
         btnDetailsEdit = findViewById(R.id.btnDetailsEdit);
         btnDetailsViewReviews = findViewById(R.id.btnDetailsViewReviews);
         btnAddReview = findViewById(R.id.btnAddReview);
+        btnDetailsDelete = findViewById(R.id.btnDetailsDelete);
+        ivDetailsImg = findViewById(R.id.ivDetailsImg);
 
         // get the listing
         listing = Parcels.unwrap(getIntent().getParcelableExtra(Listing.class.getSimpleName()));
@@ -53,10 +59,11 @@ public class ListingDetails extends AppCompatActivity {
         final ParseUser listingCreator = listing.getUser();
         ParseUser currentUser = ParseUser.getCurrentUser();
 
-        // determine whether to show the edit listing button
+        // determine whether to show the edit listing button and the delete button
         // if the current user is the listing's creator, they can edit the listing, else we remove the button
         if (!currentUser.getObjectId().equals(listingCreator.getObjectId())) {
             btnDetailsEdit.setVisibility(View.GONE);
+            btnDetailsDelete.setVisibility(View.GONE);
         }
 
         // determine whether to show add review button
@@ -64,22 +71,30 @@ public class ListingDetails extends AppCompatActivity {
             btnAddReview.setVisibility(View.GONE);
         }
 
+
         // fill in details
         tvDetailsName.setText(listingCreator.getString("Name"));
-        rating = listingCreator.getNumber("Rating");
-        if (rating.doubleValue() < 1) {
-            tvDetailsRating.setText("No ratings yet");
-        }
-        else {
-            tvDetailsRating.setText("Rating: "+ String.valueOf(rating) + " out of 5");
-        }
+//        RatingHolder ratingH = (RatingHolder) listingCreator.getParseObject("Rating");
+//        rating = ratingH.getRatingNum();
+//        if (rating.doubleValue() < 1) {
+//            tvDetailsRating.setText("No ratings yet");
+//        }
+//        else {
+//            tvDetailsRating.setText("Rating: "+ String.valueOf(rating) + " out of 5");
+//        }
         tvDetailsBlurb.setText(listing.getBlurb());
         tvDetailsBio.setText(listingCreator.getString("Bio"));
         tvDetailsAvailability.setText("Available "+ listing.getAvailability());
         tvDetailsLocation.setText("Location: "+ listingCreator.getString("location"));
         tvDetailsContact.setText("Contact: "+ listingCreator.getString("emailAddress"));
         tvDetailsDate.setText(getRelativeTimeAgo(listing.getKeyCreatedKey().toString()));
-        Log.d("ListingDetails", listingCreator.getString("emailAddress"));
+        ParseFile imgFile = listingCreator.getParseFile("profileImg");
+        if (imgFile != null) {
+            Glide.with(ListingDetails.this)
+                    .load(imgFile.getUrl())
+                    .circleCrop()
+                    .into(ivDetailsImg);
+        }
 
         // click listener for View Reviews
         btnDetailsViewReviews.setOnClickListener(new View.OnClickListener() {
@@ -114,6 +129,25 @@ public class ListingDetails extends AppCompatActivity {
                 startActivity(toAddReview);
             }
         });
+
+        btnDetailsDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openConfirmDelete();
+            }
+        });
+    }
+
+    private void openConfirmDelete() {
+        ConfirmDeleteListing confirmation = new ConfirmDeleteListing();
+        confirmation.show(getSupportFragmentManager(), "ConfirmDelete");
+    }
+
+    @Override
+    public void onDeleteClicked() {
+        listing.deleteInBackground();
+        Intent backToListingStream = new Intent(ListingDetails.this, MainActivity.class);
+        startActivity(backToListingStream);
     }
 
     @Override

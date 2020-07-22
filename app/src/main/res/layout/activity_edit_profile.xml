@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="30dp"
         android:layout_toEndOf="@+id/ivEditImg"
         android:ems="10"
@@ -50,7 +50,7 @@
         android:id="@+id/etEditBio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/etEditLocation"
+        android:layout_below="@+id/btnChooseProfImg"
         android:layout_alignStart="@+id/ivEditImg"
         android:layout_marginStart="0dp"
         android:layout_marginTop="20dp"
@@ -78,5 +78,25 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:text="Save" />
+
+    <Button
+        android:id="@+id/btnTakeProfImg"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_below="@+id/ivEditImg"
+        android:layout_alignStart="@+id/ivEditImg"
+        android:layout_marginStart="-16dp"
+        android:layout_marginTop="2dp"
+        android:text="Take Photo" />
+
+    <Button
+        android:id="@+id/btnChooseProfImg"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_below="@+id/btnTakeProfImg"
+        android:layout_alignStart="@+id/btnTakeProfImg"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="10dp"
+        android:text="Choose From Gallery" />
 
 </RelativeLayout>

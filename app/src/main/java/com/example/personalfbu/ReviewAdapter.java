@@ -11,6 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.parse.ParseFile;
+
 import java.util.List;
 
 public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder> {
@@ -66,6 +69,13 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
             tvFromUserRating.setText(String.valueOf(review.getRating()) + "/5");
             tvFromUserContent.setText(review.getReviewContent());
             tvFromUserDate.setText(ListingDetails.getRelativeTimeAgo(review.getWhenCreated().toString()));
+            ParseFile imgFile = review.getFromUser().getParseFile("profileImg");
+            if (imgFile != null) {
+                Glide.with(context)
+                        .load(imgFile.getUrl())
+                        .circleCrop()
+                        .into(ivFromUserImg);
+            }
 
         }
     }

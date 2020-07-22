@@ -25,17 +25,16 @@ public class Review extends ParseObject {
     public void setFromUser(ParseUser fromUser) { put(KEY_fromUser, fromUser); }
     public void setToUser(ParseUser toUser) { put(KEY_toUser, toUser); }
     public void setReviewContent(String reviewContent) { put(KEY_Content, reviewContent); }
+
+    // set rating in the rating holder for the user
     public void setRating(Number newRating, ParseUser toUser) {
-        Number currentRating = toUser.getNumber("Rating");
-        if(currentRating.doubleValue() >= 1){
-            Number updatedRating = (Number)((currentRating.doubleValue() + newRating.doubleValue()) / 2);
-            put(KEY_Rating, updatedRating);
-//            toUser.put(KEY_Rating, updatedRating);
-            return;
-        }
-        else {
-            put(KEY_Rating, newRating);
-//            toUser.put(KEY_Rating, newRating);
-        }
+        toUser.put("RatingAvg", newRating);
+//        RatingHolder toUserHolder = (RatingHolder) toUser.getParseObject(KEY_Rating);
+//        toUserHolder.setRatingNum(newRating);
+
+    }
+
+    public void setReviewRating(Number newRating) {
+        put(KEY_Rating, newRating);
     }
 }

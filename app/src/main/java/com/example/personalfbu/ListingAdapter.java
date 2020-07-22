@@ -12,6 +12,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.parse.ParseException;
+import com.parse.ParseFile;
+
 import org.parceler.Parcels;
 
 import java.util.List;
@@ -88,15 +92,24 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHold
 
         public void bind(Listing listing) {
             tvListingName.setText(listing.getUser().getString("Name"));
-            rating = listing.getUser().getNumber("Rating");
-            if (rating.doubleValue() < 1 ) {
-                tvListingRating.setText("No ratings yet");
-            }
-            else {
-                tvListingRating.setText(String.valueOf(rating) + "/5");
-            }
+//            RatingHolder ratingH = (RatingHolder) listing.getUser().getParseObject("RatingHolder");
+//            rating = ratingH.getRatingNum();
+//            if (rating.doubleValue() < 1 ) {
+//                tvListingRating.setText("No ratings yet");
+//            }
+//            else {
+//                tvListingRating.setText(String.valueOf(rating) + "/5");
+//            }
             tvListingDate.setText(ListingDetails.getRelativeTimeAgo(listing.getKeyCreatedKey().toString()));
             // bind image
+
+            ParseFile imgFile = listing.getUser().getParseFile("profileImg");
+            if (imgFile != null) {
+                Glide.with(context)
+                        .load(imgFile.getUrl())
+                        .circleCrop()
+                        .into(ivListingProfileImg);
+            }
 
 
 

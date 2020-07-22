@@ -11,10 +11,9 @@
 
     <TextView
         android:id="@+id/tvProfileName"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
         android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
         android:layout_toEndOf="@+id/ivProfileImg"
@@ -49,11 +48,11 @@
         android:id="@+id/tvProfileLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvProfileRating"
+        android:layout_below="@+id/ivProfileImg"
         android:layout_alignStart="@id/ivProfileImg"
         android:layout_alignParentStart="true"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:text="Location"
         android:textColor="#000000" />
 
@@ -139,8 +138,8 @@
 
     <ImageView
         android:id="@+id/ivProfileImg"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
+        android:layout_width="91dp"
+        android:layout_height="95dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="40dp"

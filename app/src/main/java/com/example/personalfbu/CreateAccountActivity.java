@@ -8,9 +8,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
 
 public class CreateAccountActivity extends AppCompatActivity {
@@ -40,7 +43,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                 String password = etCreatePassword.getText().toString();
                 String email = etCreateEmail.getText().toString();
                 createAccount(username, email, password);
-                Intent toEditProfile = new Intent(CreateAccountActivity.this, EditProfileActivity.class);
+                Intent toEditProfile = new Intent(CreateAccountActivity.this, LoginActivity.class);
                 startActivity(toEditProfile);
             }
         });
@@ -48,7 +51,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
     private void createAccount(String username, String email, String password) {
-        ParseUser user = new ParseUser();  // create new user
+        final ParseUser user = new ParseUser();  // create new user
 
         // set core properties
         user.setUsername(username);
@@ -59,16 +62,44 @@ public class CreateAccountActivity extends AppCompatActivity {
         user.signUpInBackground(new SignUpCallback() {
             @Override
             public void done(ParseException e) {
-                if (e == null) {
-                    // yay no errors!
-
+                if (e != null) {
+                    Toast.makeText(CreateAccountActivity.this, "Issue creating account", Toast.LENGTH_SHORT).show();
+                    Log.d("ahhh", "arghh", e);
                 }
                 else {
-                    // there was an error and we need to handle it
-
+//                    ParseACL newAcl = new ParseACL(user);
+//                    newAcl.setPublicWriteAccess(true);
                 }
             }
         });
+
+//        // create a rating holder for this user
+//        RatingHolder newRatingHolder = new RatingHolder();
+//        newRatingHolder.setRatingOwner(user);
+//        newRatingHolder.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(ParseException e) {
+//                if (e!= null) {
+//                    Toast.makeText(CreateAccountActivity.this, "Issue creating account1", Toast.LENGTH_SHORT).show();
+//                    Log.e("CreateAccountActivity", "whyyy", e);
+//                }
+//                else {
+//                    // no error
+//                }
+//            }
+//        });
+
+        // set rating pointer to newly created ratingHolder
+//        user.put("Rating", newRatingHolder);
+//        user.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(ParseException e) {
+//                if (e!=null) {
+//                    Toast.makeText(CreateAccountActivity.this, "Issue creating account2", Toast.LENGTH_SHORT).show();
+//                    Log.e("CreateAccountActivity", "Issuessss", e);
+//                }
+//            }
+//        });
 
     }
 }

@@ -16,28 +16,29 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.personalfbu.Listing;
 import com.example.personalfbu.R;
+import com.example.personalfbu.RatingHolder;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class CreateFragment extends Fragment {
 
     private final String TAG = "CreateFragment";
-    TextView tvComposeName;
-    TextView tvComposeRating;
+    TextView tvComposeName, tvComposeRating, tvComposeEmail, tvComposeLocation;
     ImageView ivComposeProfileImg;
-    EditText etComposeBlurb;
-    TextView tvComposeEmail;
-    EditText etComposeAvailability;
-    TextView tvComposeLocation;
+    EditText etComposeBlurb, etComposeAvailability;
     Button btnComposeSubmit;
+    ParseFile imgFile;
 
     public CreateFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     // The onCreateView method is called when Fragment should create its View object hierarchy,
@@ -69,15 +70,24 @@ public class CreateFragment extends Fragment {
 
         // populate elements
         tvComposeName.setText(currentUser.getString("Name"));
-        Number rating = currentUser.getNumber("Rating");
-        if (rating.doubleValue() < 1) {
-            tvComposeRating.setText("No ratings yet");
-        }
-        else {
-            tvComposeRating.setText(String.valueOf(rating));
-        }
+//        RatingHolder ratingH = (RatingHolder) currentUser.getParseObject("Rating");
+//        Number rating = ratingH.getRatingNum();
+//        if (rating.doubleValue() < 1) {
+//            tvComposeRating.setText("No ratings yet");
+//        }
+//        else {
+//            tvComposeRating.setText(String.valueOf(rating));
+//        }
         tvComposeEmail.setText(currentUser.getEmail());
         tvComposeLocation.setText("Area: "+currentUser.getString("location"));
+        imgFile = currentUser.getParseFile("profileImg");
+        if (imgFile != null){
+            Glide.with(getContext())
+                    .load(imgFile.getUrl())
+                    .transform(new RoundedCornersTransformation(15, 3))
+//                    .circleCrop()
+                    .into(ivComposeProfileImg);
+        }
 
         // Click listener for submit
         btnComposeSubmit.setOnClickListener(new View.OnClickListener() {
