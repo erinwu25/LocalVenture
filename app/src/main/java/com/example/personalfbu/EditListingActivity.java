@@ -45,7 +45,7 @@ public class EditListingActivity extends AppCompatActivity {
         // populate elements
         tvEditListingName.setText(currentUser.getString("Name"));
         etEditListingBlurb.setText(listing.getBlurb());
-        etEditListingAvailability.setText(listing.getAvailability());
+//        etEditListingAvailability.setText(listing.getAvailability());
 
         btnEditListingSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,16 +55,16 @@ public class EditListingActivity extends AppCompatActivity {
                     Toast.makeText(EditListingActivity.this, "Blurb cannot be empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String availability = etEditListingAvailability.getText().toString();
-                if(availability.isEmpty()) {
-                    Toast.makeText(EditListingActivity.this, "Availability cannot be empty", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+//                String availability = etEditListingAvailability.getText().toString();
+//                if(availability.isEmpty()) {
+//                    Toast.makeText(EditListingActivity.this, "Availability cannot be empty", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
                 // save changes and return
-                saveListingChanges(currentUser, listing, blurb, availability);
+                saveListingChanges(currentUser, listing, blurb);
                 Intent backToListing = new Intent(EditListingActivity.this, ListingDetails.class);
                 backToListing.putExtra("blurb", blurb);
-                backToListing.putExtra("availability", availability);
+//                backToListing.putExtra("availability", availability);
                 setResult(10, backToListing);
                 finish();
 
@@ -72,9 +72,8 @@ public class EditListingActivity extends AppCompatActivity {
         });
     }
 
-    private void saveListingChanges(ParseUser currentUser, Listing listing, String blurb, String availability) {
+    private void saveListingChanges(ParseUser currentUser, Listing listing, String blurb) {
         listing.setBlurb(blurb);
-        listing.setAvailability(availability);
         listing.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {

@@ -23,6 +23,7 @@ import com.example.personalfbu.EditProfileActivity;
 import com.example.personalfbu.MyListings;
 import com.example.personalfbu.R;
 import com.example.personalfbu.RatingHolder;
+import com.example.personalfbu.Review;
 import com.example.personalfbu.ViewReviewsActivity;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -32,6 +33,7 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
@@ -43,6 +45,8 @@ public class ProfileFragment extends Fragment {
     ImageButton btnEditProfile;
     ImageView ivProfileImg;
     ParseFile image;
+    List<Review> ratingResults = new ArrayList<>();
+    double rating;
     // get current user
     final ParseUser currentUser = ParseUser.getCurrentUser();
 
@@ -90,37 +94,7 @@ public class ProfileFragment extends Fragment {
                     .into(ivProfileImg);
         }
 
-//        Log.d("ProfileFragment", currentUser.getObjectId());
-        String currUserId = currentUser.getObjectId();
-
-        // testing
-//        final RatingHolder[] result = new RatingHolder[1];
-//        ParseQuery<RatingHolder> ratingQuery = ParseQuery.getQuery(RatingHolder.class);
-//        ratingQuery.include("RatingOwner");
-//        ratingQuery.whereEqualTo("RatingOwner", currUserId);
-//        ratingQuery.setLimit(1);
-//        ratingQuery.findInBackground(new FindCallback<RatingHolder>() {
-//            @Override
-//            public void done(List<RatingHolder> objects, ParseException e) {
-//                if (e != null) {
-//                    // issue
-//                    Log.e("ProfileFragment", "I hate everything", e);
-//                }
-//                else {
-//                    result[0] = objects.get(0);
-//                    Log.d("ProfileFragment", result[0].toString());
-//
-//
-//                    Number rating = result[0].getRatingNum();
-//                    if(rating.doubleValue() < 1) {
-//                        tvProfileRating.setText("No ratings yet");
-//                    }
-//                    else {
-//                        tvProfileRating.setText(String.valueOf(rating));
-//                    }
-//                }
-//            }
-//        });
+        queryRatings(currentUser);
 
 
 
@@ -158,6 +132,56 @@ public class ProfileFragment extends Fragment {
                 // navigate to my listings
                 Intent toMyListings = new Intent(getContext(), MyListings.class);
                 startActivity(toMyListings);
+            }
+        });
+
+    }
+
+    private void averageRatings(List<Review> ratingResults) {
+        // get all the rating numbers from the returned reviews
+        double ratingNums = 0.0;
+        int numOfReviews = ratingResults.size();
+        if (numOfReviews > 0) {
+            for (Review review : ratingResults) {
+                ratingNums += review.getNumber(Review.KEY_Rating).doubleValue();
+                rating = ratingNums/numOfReviews;
+            }
+        }
+        else {
+            rating = 0.0;
+        }
+        if(rating != 0.0) {
+            tvProfileRating.setText("Rating: "+ String.valueOf(rating)+" out of 5");
+        }
+        else {
+            tvProfileRating.setText("No ratings yet");
+        }
+    }
+
+    public void queryRatings(ParseUser user) {
+
+        // specify which class to query
+        ParseQuery<Review> query = ParseQuery.getQuery(Review.class);
+
+        // include data referred by ratingNum?
+        query.include("*");
+
+        // filter by reviews about certain user
+        query.whereEqualTo(Review.KEY_toUser, user);
+
+        // Limit query to last 20 listings
+        query.setLimit(20);
+
+        // start an asynchronous call for Reviews
+        query.findInBackground(new FindCallback<Review>() {
+            @Override
+            public void done(List<Review> reviews, ParseException e) {
+                if (e != null) {
+                    // log issue getting listings
+                    return;
+                }
+               ratingResults.addAll(reviews);
+               averageRatings(ratingResults);
             }
         });
 

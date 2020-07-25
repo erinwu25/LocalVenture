@@ -66,7 +66,7 @@ public class ViewReviewsActivity extends AppCompatActivity {
         // order listings by creation date descending
         query.addDescendingOrder(Review.KEY_createdAt);
 
-        // start an asynchronous call for posts
+        // start an asynchronous call for Reviews
         query.findInBackground(new FindCallback<Review>() {
             @Override
             public void done(List<Review> reviews, ParseException e) {

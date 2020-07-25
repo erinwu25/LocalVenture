@@ -249,6 +249,7 @@ public class EditProfileActivity extends AppCompatActivity {
             // Load the image located at photoUri into selectedImage
             selectedImage = loadFromUri(photoUri);
 
+            // scale image to downsize
             selectedImage = BitmapScaler.scaleToFitWidth(selectedImage, 100);
 
             // Load the selected image into a preview

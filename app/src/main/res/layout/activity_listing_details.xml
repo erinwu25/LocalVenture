@@ -149,10 +149,10 @@
         android:id="@+id/tvDetailsDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/tvDetailsName"
+        android:layout_alignBottom="@+id/tvDetailsName"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="0dp"
         android:layout_marginEnd="40dp"
+        android:layout_marginBottom="0dp"
         android:text="Date"
         android:textColor="#000000" />
 
@@ -165,4 +165,61 @@
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="0dp"
         android:text="Delete Listing" />
+    
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/pic1"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_below="@+id/btnDetailsViewReviews"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="400dp"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/ic_menu_gallery" />
+
+        <ImageView
+            android:id="@+id/pic2"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignTop="@+id/pic1"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="400dp"
+            android:layout_toEndOf="@+id/pic1"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/ic_menu_gallery" />
+
+        <ImageView
+            android:id="@+id/pic3"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignTop="@+id/pic2"
+            android:layout_marginStart="210dp"
+            android:layout_marginTop="400dp"
+            android:layout_toEndOf="@+id/pic2"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/ic_menu_gallery" />
+
+        <ImageView
+            android:id="@+id/pic4"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignTop="@+id/pic3"
+            android:layout_marginStart="300dp"
+            android:layout_marginTop="400dp"
+            android:layout_toEndOf="@+id/pic3"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/ic_menu_gallery" />
+
+    <ImageView
+        android:id="@+id/ivExpanded"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        />
+    </FrameLayout>
 </RelativeLayout>
