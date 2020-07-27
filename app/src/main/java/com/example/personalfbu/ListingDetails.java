@@ -380,6 +380,7 @@ public class ListingDetails extends AppCompatActivity implements ConfirmDeleteLi
         // check if request code is the same as result code
         if(requestCode == 10) {
             tvDetailsBlurb.setText(data.getStringExtra("blurb"));
+            tvDetailsAvailability.setText("Available " + data.getStringExtra("start") + " - " + data.getStringExtra("end"));
         }
     }
 

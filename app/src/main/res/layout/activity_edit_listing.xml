@@ -58,18 +58,6 @@
         android:hint="Enter a short description of the adventures you offer!"
         android:inputType="textMultiLine" />
 
-    <EditText
-        android:id="@+id/etEditListingAvailability"
-        android:layout_width="282dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvEditListingAvailabilityTitle"
-        android:layout_alignStart="@+id/tvEditListingAvailabilityTitle"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="5dp"
-        android:ems="10"
-        android:hint="MM/DD/YYYY-MM/DD/YYYY"
-        android:inputType="textPersonName" />
-
     <TextView
         android:id="@+id/tvEditListingAvailabilityTitle"
         android:layout_width="wrap_content"
@@ -85,10 +73,66 @@
         android:id="@+id/btnEditListingSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/etEditListingAvailability"
+        android:layout_below="@+id/etEditListingBlurb"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="149dp"
         android:layout_marginEnd="60dp"
         android:text="Save" />
+
+    <Button
+        android:id="@+id/btnEditStart"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_below="@+id/tvEditListingAvailabilityTitle"
+        android:layout_alignStart="@+id/tvEditListingAvailabilityTitle"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="15dp"
+        android:text="Select Start Date" />
+
+    <Button
+        android:id="@+id/btnEditEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_below="@+id/tvEditListingAvailabilityTitle"
+        android:layout_alignEnd="@+id/etEditListingBlurb"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="0dp"
+        android:text="Select End Date" />
+
+    <TextView
+        android:id="@+id/tvEditStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnEditStart"
+        android:layout_alignEnd="@+id/btnEditStart"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="0dp"
+        android:text="Start"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/tvEditEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnEditEnd"
+        android:layout_alignStart="@+id/btnEditEnd"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="15dp"
+        android:text="End"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnEditStart"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="0dp"
+        android:layout_toStartOf="@+id/tvEditEnd"
+        android:layout_toEndOf="@+id/tvEditStart"
+        android:gravity="center"
+        android:text="-"
+        android:textColor="#000000" />
 
 </RelativeLayout>
