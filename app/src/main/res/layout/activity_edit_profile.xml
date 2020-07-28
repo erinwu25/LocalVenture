@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/ivEditImg"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="101dp"
+        android:layout_height="116dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="30dp"
@@ -23,8 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="38dp"
         android:layout_toEndOf="@+id/ivEditImg"
         android:ems="10"
         android:hint="Name"
@@ -33,26 +33,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etEditLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etEditName"
-        android:layout_alignStart="@+id/etEditName"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:hint="Enter location"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/etEditName"
-        app:layout_constraintTop_toBottomOf="@+id/etEditName" />
-
-    <EditText
         android:id="@+id/etEditBio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnChooseProfImg"
+        android:layout_below="@+id/autocomplete_fragment_edit"
         android:layout_alignStart="@+id/ivEditImg"
-        android:layout_marginStart="0dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Bio"
@@ -85,8 +71,8 @@
         android:layout_height="35dp"
         android:layout_below="@+id/ivEditImg"
         android:layout_alignStart="@+id/ivEditImg"
-        android:layout_marginStart="-16dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="5dp"
         android:text="Take Photo" />
 
     <Button
@@ -95,8 +81,31 @@
         android:layout_height="35dp"
         android:layout_below="@+id/btnTakeProfImg"
         android:layout_alignStart="@+id/btnTakeProfImg"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="5dp"
         android:text="Choose From Gallery" />
+
+    <fragment
+        android:id="@+id/autocomplete_fragment_edit"
+        android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_below="@+id/btnChooseProfImg"
+        android:layout_alignStart="@+id/btnTakeProfImg"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="45dp"></fragment>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnChooseProfImg"
+        android:layout_alignStart="@+id/autocomplete_fragment_edit"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="15dp"
+        android:text="Enter your city: "
+        android:textColor="#000000" />
 
 </RelativeLayout>

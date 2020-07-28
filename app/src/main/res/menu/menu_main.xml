@@ -6,8 +6,7 @@
         android:id="@+id/search"
         android:icon="?android:attr/actionModeWebSearchDrawable"
         android:title="Search"
-        app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="always|collapseActionView" />
+        app:showAsAction="always" />
     <item
         android:id="@+id/LogOut"
         android:title="Log Out"

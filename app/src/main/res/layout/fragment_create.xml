@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="200dp"
+        android:layout_marginEnd="225dp"
         android:text="Name" />
 
     <EditText
@@ -97,7 +97,7 @@
         android:layout_height="70dp"
         android:layout_alignTop="@+id/tvComposeName"
         android:layout_marginTop="-20dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="25dp"
         android:layout_toStartOf="@+id/tvComposeName"
         android:src="@android:drawable/ic_menu_compass" />
 

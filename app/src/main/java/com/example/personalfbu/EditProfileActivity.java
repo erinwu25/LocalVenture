@@ -1,5 +1,6 @@
 package com.example.personalfbu;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
@@ -21,8 +22,18 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.common.api.Status;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.AddressComponent;
+import com.google.android.libraries.places.api.model.AddressComponents;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.model.TypeFilter;
+import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
@@ -32,13 +43,16 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.List;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class EditProfileActivity extends AppCompatActivity {
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1025;
     public final static int PICK_PHOTO_CODE = 1046;
-    EditText etEditName, etEditLocation, etEditBio, etEditEmail;
+    EditText etEditName, etEditBio, etEditEmail;
     Button btnEditSave, btnTakeProfImg, btnChooseProfImg;
     String name, location, email, bio, prevImgUrl;
     ImageView ivEditImg;
@@ -48,16 +62,36 @@ public class EditProfileActivity extends AppCompatActivity {
     Bitmap takenImage, selectedImage;
     Boolean chosePhoto = false;
     Uri photoUri;
+    ParseGeoPoint geopoint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
+        // Initialize the SDK
+        Places.initialize(EditProfileActivity.this, getResources().getString(R.string.places_sdk_key));
+
+        // Create a new PlacesClient instance
+        PlacesClient placesClient = Places.createClient(this);
+
+        // Initialize the AutocompleteSupportFragment.
+        AutocompleteSupportFragment autocompleteFragment = (AutocompleteSupportFragment)
+                getSupportFragmentManager().findFragmentById(R.id.autocomplete_fragment_edit);
+
+        // set hint
+        autocompleteFragment.setHint("Enter your city");
+
+        // set type filter for cities
+        autocompleteFragment.setTypeFilter(TypeFilter.CITIES);
+
+        // Specify the types of place data to return.
+        autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ADDRESS_COMPONENTS, Place.Field.NAME, Place.Field.LAT_LNG));
+
+
         // find elements on view
         etEditName = findViewById(R.id.etEditName);
         etEditEmail = findViewById(R.id.etEditEmail);
-        etEditLocation = findViewById(R.id.etEditLocation);
         etEditBio = findViewById(R.id.etEditBio);
         btnEditSave = findViewById(R.id.btnEditSave);
         btnTakeProfImg = findViewById(R.id.btnTakeProfImg);
@@ -71,8 +105,9 @@ public class EditProfileActivity extends AppCompatActivity {
             etEditName.setText(name);
         }
         location = currentUser.getString("location");
+        geopoint = currentUser.getParseGeoPoint("coordinates");
         if(location != null) {
-            etEditLocation.setText(location);
+            autocompleteFragment.setText(location);
         }
         email = currentUser.getEmail();
         if(email != null) {
@@ -90,6 +125,34 @@ public class EditProfileActivity extends AppCompatActivity {
 //                    .transform(new RoundedCornersTransformation(15, 3))
                     .into(ivEditImg);
         }
+
+        // chose place listener
+        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(@NonNull Place place) {
+
+                List<AddressComponent> addressComponentList = place.getAddressComponents().asList();
+                AddressComponent c;
+                location = place.getName();
+                for (int i = 0; i < addressComponentList.size(); i++) {
+                    c = addressComponentList.get(i);
+                    if(c.getTypes().contains("administrative_area_level_1")) {
+                        location += ", " + c.getShortName();
+                        Log.d("EditProfileActivity", place.getName() + ", " + c.getShortName());
+                    }
+                    if(c.getTypes().contains("country")) {
+                        location += ", " + c.getName();
+                        Log.d("EditProfileActivity", place.getName() + ", " + c.getName());
+                    }
+                }
+                geopoint = new ParseGeoPoint(place.getLatLng().latitude, place.getLatLng().longitude);
+            }
+
+            @Override
+            public void onError(@NonNull Status status) {
+                Log.d("EditProfileActivity", "an error occurred while getting place data: " + status);
+            }
+        });
 
 
         // click listener for take photo
@@ -117,8 +180,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     Toast.makeText(EditProfileActivity.this, "Name cannot be empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                location = etEditLocation.getText().toString();
-                if(location.isEmpty()) {
+                if(location.isEmpty() || geopoint == null) {
                     Toast.makeText(EditProfileActivity.this, "Location cannot be empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -142,7 +204,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 }
 
                 // save profile details
-                saveProfile(currentUser, name, location, bio, email, photoFile);
+                saveProfile(currentUser, name, location, bio, email, photoFile, geopoint);
                 Intent backToProfile = new Intent(EditProfileActivity.this, MainActivity.class);
                 backToProfile.putExtra("name", name);
                 backToProfile.putExtra("location", location);
@@ -260,7 +322,7 @@ public class EditProfileActivity extends AppCompatActivity {
             chosePhoto = true;
         }
         else { // Result was a failure
-            Toast.makeText(EditProfileActivity.this, "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
+
         }
     }
 
@@ -299,12 +361,14 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
 
-    private void saveProfile(final ParseUser currentUser, String name, String location, String bio, String email, final File photoFile) {
+    private void saveProfile(final ParseUser currentUser, String name, String location, String bio,
+                             String email, final File photoFile, ParseGeoPoint geopoint) {
         currentUser.put("emailAddress", email);
         currentUser.setEmail(email);
         currentUser.put("Name", name);
         currentUser.put("location", location);
         currentUser.put("Bio", bio);
+        currentUser.put("coordinates", geopoint);
 
         if (photoFile.getPath() == "chosefile") {
             final ParseFile p = BitmapScaler.conversionBitmapParseFile(selectedImage);
