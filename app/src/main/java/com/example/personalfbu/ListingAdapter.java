@@ -114,9 +114,6 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHold
                         .circleCrop()
                         .into(ivListingProfileImg);
             }
-
-
-
         }
 
         public void queryRatings(ParseUser user) {

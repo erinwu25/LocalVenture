@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
+import android.icu.util.DateInterval;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,7 +21,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseUser;
 
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -56,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.search:
                 Intent toSearch = new Intent(this, SearchActivity.class);
                 startActivityForResult(toSearch, REQUEST_CODE);
+                break;
+            case R.id.clearSearch:
+                clearSearchFilters();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -106,25 +112,71 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void clearSearchFilters() {
+        StreamFragment fragInst = (StreamFragment) fragmentManager.findFragmentById(R.id.flContainer);
+        if (fragInst != null) {
+            fragInst.listingList.clear();
+            fragInst.adapter.notifyDataSetChanged();
+            fragInst.listingList.addAll(fragInst.masterList);
+            fragInst.adapter.notifyDataSetChanged();
+        }
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         // check if request code is the same
-        if (requestCode == REQUEST_CODE) {
-            // filter based on date and location
+        if ((data != null) &&requestCode == REQUEST_CODE) {
+            // get fragment instance
+            StreamFragment fragInst = (StreamFragment) fragmentManager.findFragmentById(R.id.flContainer);
+            // filter based on location
             if (data.hasExtra("location")) {
-                // time to filter rv (alter rvlist)
-                StreamFragment fragInst = (StreamFragment) fragmentManager.findFragmentById(R.id.flContainer);
                 if (fragInst != null) {
                     filterLocation(fragInst.adapter, fragInst.listingList, fragInst.masterList,
-                            Double.parseDouble(data.getStringExtra("lat")), Double.parseDouble(data.getStringExtra("lng")));
+                            Double.parseDouble(data.getStringExtra("lat")), Double.parseDouble(data.getStringExtra("lng")),
+                            Integer.valueOf(data.getStringExtra("dist")));
+                }
+            }
+            // filter based on date
+            if (data.hasExtra("startDate")) {
+                if (fragInst != null) {
+                    Date startDate = new Date();
+                    Date endDate = new Date();
+                    startDate.setTime(data.getLongExtra("startDate", -1));
+                    endDate.setTime(data.getLongExtra("endDate", -1));
+                    filterDate(fragInst.adapter, fragInst.listingList, fragInst.masterList, startDate, endDate);
                 }
             }
         }
     }
 
-    private void filterLocation(ListingAdapter adapter, List<Listing> listingList, List<Listing> masterList, double lat, double lng) {
+    private void filterDate(ListingAdapter adapter, List<Listing> listingList, List<Listing> masterList, Date startDate, Date endDate) {
+        List<Listing> inDate = new ArrayList<>();
+        Listing item;
+        Date listingStart, listingEnd;
+        for (int i = 0; i<listingList.size(); i++) {
+            item = listingList.get(i);
+            listingStart = item.getStartDate();
+            listingEnd = item.getEndDate();
+            if (overlapDates(startDate, endDate, listingStart, listingEnd)) {
+                inDate.add(item);
+            }
+        }
+        listingList.clear();
+        adapter.notifyDataSetChanged();
+        listingList.addAll(inDate);
+        adapter.notifyDataSetChanged();
+    }
+
+    private boolean overlapDates(Date startDate, Date endDate, Date listingStart, Date listingEnd) {
+        // from https://stackoverflow.com/questions/17106670/how-to-check-a-timeperiod-is-overlapping-another-time-period-in-java
+        return (!startDate.after(listingEnd) && !listingStart.after(endDate));
+    }
+
+
+    private void filterLocation(ListingAdapter adapter, List<Listing> listingList, List<Listing> masterList,
+                                double lat, double lng, int maxDistance) {
         Listing item;
         Double dist;
         List<Integer> newList = new ArrayList<>();
@@ -133,8 +185,7 @@ public class MainActivity extends AppCompatActivity {
             item = masterList.get(i);
             geo = item.getUser().getParseGeoPoint("coordinates");
             dist = getDist(lat, lng, geo.getLatitude(), geo.getLongitude());
-            Log.d(Tag, dist.toString());
-            if (dist <= 50) {
+            if (dist <= maxDistance) {
                 newList.add(i);
             }
         }
@@ -143,12 +194,11 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
         for(Integer ind : newList) {
             listingList.add(masterList.get(ind));
-//            adapter.notifyItemInserted(listingList.size()-1);
-//            adapter.notifyItemChanged(listingList.size());
         }
-//        adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
     }
 
+    // uses the great circle distance approach
     private Double getDist(double lat1, double lng1, double lat2, double lng2) {
         double rlat1, rlat2, rlng1, rlng2;
         rlat1 = lat1/(180/Math.PI);

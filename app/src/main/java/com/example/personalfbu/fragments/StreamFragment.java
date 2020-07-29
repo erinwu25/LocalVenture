@@ -102,11 +102,11 @@ public class StreamFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        adapter.notifyDataSetChanged();
-        for (int i = 0; i < listingList.size(); i++) {
-            Log.d("STream", listingList.get(i).getUser().getUsername());
-            Log.d("STream", "if exists: "+listingList.get(i).getUser().getParseFile("profileImg"));
-        }
+//        adapter.notifyDataSetChanged();
+//        for (int i = 0; i < listingList.size(); i++) {
+//            Log.d("STream", listingList.get(i).getUser().getUsername());
+//            Log.d("STream", "if exists: "+listingList.get(i).getUser().getParseFile("profileImg"));
+//        }
 //        listingList.clear();
 //        adapter.notifyDataSetChanged();
     }

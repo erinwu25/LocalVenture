@@ -32,6 +32,7 @@ import org.parceler.Parcels;
 
 import java.lang.reflect.Array;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -428,7 +429,8 @@ public class ListingDetails extends AppCompatActivity implements ConfirmDeleteLi
             rating = 0.0;
         }
         if(rating != 0.0) {
-            tvDetailsRating.setText("Rating: "+ String.valueOf(rating)+" out of 5");
+            DecimalFormat df = new DecimalFormat("#.##");
+            tvDetailsRating.setText("Rating: "+ df.format(rating)+" out of 5");
         }
         else {
             tvDetailsRating.setText("No ratings yet");

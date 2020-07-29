@@ -16,9 +16,139 @@
         android:id="@+id/btnReturnSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/btnFilterStart"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="266dp"
+        android:layout_marginTop="15dp"
         android:text="Search" />
+
+    <RadioGroup
+        android:id="@+id/rgDist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDistTitle"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="30dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb5m"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="5" />
+
+        <RadioButton
+            android:id="@+id/rb10m"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="10" />
+
+        <RadioButton
+            android:id="@+id/rb25m"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="false"
+            android:text="25" />
+
+        <RadioButton
+            android:id="@+id/rb50m"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="50" />
+
+        <RadioButton
+            android:id="@+id/rb100m"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="100" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvDistTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/autocomplete_fragment"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="25dp"
+        android:text="Show all results within this many miles:"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvFilterDates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rgDist"
+        android:layout_alignStart="@+id/tvDistTitle"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="50dp"
+        android:text="Filter by dates:"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvFilterDash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvFilterDates"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="-"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvFilterStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvFilterDash"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toStartOf="@+id/tvFilterDash"
+        android:text="Start"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvFilterEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvFilterDash"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/tvFilterDash"
+        android:text="End"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnFilterStart"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_below="@+id/tvFilterStart"
+        android:layout_alignEnd="@+id/tvFilterStart"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="0dp"
+        android:text="Select Start Date" />
+
+    <Button
+        android:id="@+id/btnFilterEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_below="@+id/tvFilterEnd"
+        android:layout_alignStart="@+id/tvFilterEnd"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="10dp"
+        android:text="Select End Date" />
 
 </RelativeLayout>

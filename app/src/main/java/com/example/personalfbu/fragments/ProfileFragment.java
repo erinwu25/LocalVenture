@@ -33,6 +33,7 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.io.File;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -151,7 +152,8 @@ public class ProfileFragment extends Fragment {
             rating = 0.0;
         }
         if(rating != 0.0) {
-            tvProfileRating.setText("Rating: "+ String.valueOf(rating)+" out of 5");
+            DecimalFormat df = new DecimalFormat("#.##");
+            tvProfileRating.setText("Rating: "+ df.format(rating)+" out of 5");
         }
         else {
             tvProfileRating.setText("No ratings yet");
@@ -192,7 +194,7 @@ public class ProfileFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         // check if request code is the same as result code
-        if(requestCode == 25) {
+        if((data != null) && requestCode == 25) {
             // get string extras and set textviews
                 tvProfileName.setText(data.getStringExtra("name"));
                 tvProfileLocation.setText(data.getStringExtra("location"));
