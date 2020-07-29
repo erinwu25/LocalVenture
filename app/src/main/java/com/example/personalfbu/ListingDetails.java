@@ -51,6 +51,7 @@ public class ListingDetails extends AppCompatActivity implements ConfirmDeleteLi
     ArrayList<ParseFile> fileList;
     private Animator currentAnimator;
     private int shortAnimationDuration;
+    ParseUser currentUser, listingUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +83,8 @@ public class ListingDetails extends AppCompatActivity implements ConfirmDeleteLi
 
         // get listing creator and current user
         final ParseUser listingCreator = listing.getUser();
-        ParseUser currentUser = ParseUser.getCurrentUser();
+        listingUser = listing.getUser();
+        currentUser = ParseUser.getCurrentUser();
 
         // determine whether to show the edit listing button and the delete button
         // if the current user is the listing's creator, they can edit the listing, else we remove the button
@@ -337,10 +339,14 @@ public class ListingDetails extends AppCompatActivity implements ConfirmDeleteLi
                     public void onAnimationEnd(Animator animation) {
                         pic.setAlpha(1f);
                         ivExpanded.setVisibility(View.GONE);
-                        btnAddReview.setVisibility(View.VISIBLE);
+                        if (currentUser.getObjectId().equals(listingUser.getObjectId())) {
+                            btnDetailsEdit.setVisibility(View.VISIBLE);
+                            btnDetailsDelete.setVisibility(View.VISIBLE);
+                        }
+                        if(!currentUser.getObjectId().equals(listingUser.getObjectId())) {
+                            btnAddReview.setVisibility(View.VISIBLE);
+                        }
                         btnDetailsViewReviews.setVisibility(View.VISIBLE);
-                        btnDetailsDelete.setVisibility(View.VISIBLE);
-                        btnDetailsEdit.setVisibility(View.VISIBLE);
                         currentAnimator = null;
                     }
 
@@ -348,10 +354,15 @@ public class ListingDetails extends AppCompatActivity implements ConfirmDeleteLi
                     public void onAnimationCancel(Animator animation) {
                         pic.setAlpha(1f);
                         ivExpanded.setVisibility(View.GONE);
-                        btnAddReview.setVisibility(View.VISIBLE);
+                        if (currentUser.getObjectId().equals(listingUser.getObjectId())) {
+                            btnDetailsEdit.setVisibility(View.VISIBLE);
+                            btnDetailsDelete.setVisibility(View.VISIBLE);
+                        }
+                        if(!currentUser.getObjectId().equals(listingUser.getObjectId())) {
+                            btnAddReview.setVisibility(View.VISIBLE);
+                        }
                         btnDetailsViewReviews.setVisibility(View.VISIBLE);
-                        btnDetailsDelete.setVisibility(View.VISIBLE);
-                        btnDetailsEdit.setVisibility(View.VISIBLE);
+
                         currentAnimator = null;
                     }
                 });

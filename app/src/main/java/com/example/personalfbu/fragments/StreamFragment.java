@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 
 import com.example.personalfbu.Listing;
 import com.example.personalfbu.ListingAdapter;
+import com.example.personalfbu.MainActivity;
 import com.example.personalfbu.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -27,9 +28,11 @@ import java.util.List;
 
 public class StreamFragment extends Fragment {
 
-    private RecyclerView rvStream;
-    private ListingAdapter adapter;
-    private List<Listing> listingList;
+    public RecyclerView rvStream;
+    public ListingAdapter adapter;
+    public List<Listing> listingList;
+    public List<Listing> masterList;
+    private MainActivity mainActivity = (MainActivity)getActivity();
 
     // Required empty public constructor
     public StreamFragment() {}
@@ -48,6 +51,7 @@ public class StreamFragment extends Fragment {
         rvStream = view.findViewById(R.id.rvStream);
 
         // initialize a list of listings and adapter
+        masterList = new ArrayList<>();
         listingList = new ArrayList<>();
         adapter = new ListingAdapter(getContext(), listingList);
 
@@ -89,8 +93,21 @@ public class StreamFragment extends Fragment {
                // log that i'm getting data
 
                listingList.addAll(listings);
+               masterList.addAll(listings);
                adapter.notifyDataSetChanged();
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
+        for (int i = 0; i < listingList.size(); i++) {
+            Log.d("STream", listingList.get(i).getUser().getUsername());
+            Log.d("STream", "if exists: "+listingList.get(i).getUser().getParseFile("profileImg"));
+        }
+//        listingList.clear();
+//        adapter.notifyDataSetChanged();
     }
 }

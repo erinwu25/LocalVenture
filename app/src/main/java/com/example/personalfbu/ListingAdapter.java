@@ -3,6 +3,7 @@ package com.example.personalfbu;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,10 +24,11 @@ import com.parse.ParseUser;
 
 import org.parceler.Parcels;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHolder> implements Filterable {
+public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHolder> {
     Context context;
     List<Listing> listings;
     List<Listing> allListings;
@@ -65,22 +67,6 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHold
         notifyDataSetChanged();
     }
 
-    @Override
-    public Filter getFilter() {
-        return filter;
-    }
-
-    Filter filter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence charSequence) {
-            return null;
-        }
-
-        @Override
-        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-
-        }
-    };
 
     // define a viewholder
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -120,6 +106,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHold
             tvListingDate.setText(ListingDetails.getRelativeTimeAgo(listing.getKeyCreatedKey().toString()));
 
             // bind image
+            ivListingProfileImg.setImageResource(R.drawable.ic_menu_compass);
             ParseFile imgFile = listing.getUser().getParseFile("profileImg");
             if (imgFile != null) {
                 Glide.with(context)
@@ -133,7 +120,8 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHold
         }
 
         public void queryRatings(ParseUser user) {
-
+            Log.d("queryRatings", user.toString());
+            ratingResults.clear();
             // specify which class to query
             ParseQuery<Review> query = ParseQuery.getQuery(Review.class);
 
@@ -175,7 +163,8 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHold
                 rating = 0.0;
             }
             if(rating != 0.0) {
-                tvListingRating.setText("Rating: "+ String.valueOf(rating)+" out of 5");
+                DecimalFormat df = new DecimalFormat("#.##");
+                tvListingRating.setText("Rating: "+ df.format(rating)+" out of 5");
             }
             else {
                 tvListingRating.setText("No ratings yet");

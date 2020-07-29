@@ -122,7 +122,7 @@
         android:layout_below="@+id/tvDetailsContact"
         android:layout_alignStart="@+id/tvDetailsContact"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:text="View Reviews" />
 
     <Button
@@ -178,7 +178,7 @@
             android:layout_below="@+id/btnDetailsViewReviews"
             android:layout_alignParentStart="true"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="400dp"
+            android:layout_marginTop="410dp"
             android:visibility="invisible"
             app:srcCompat="@drawable/ic_menu_gallery" />
 
@@ -188,7 +188,7 @@
             android:layout_height="70dp"
             android:layout_alignTop="@+id/pic1"
             android:layout_marginStart="120dp"
-            android:layout_marginTop="400dp"
+            android:layout_marginTop="410dp"
             android:layout_toEndOf="@+id/pic1"
             android:visibility="invisible"
             app:srcCompat="@drawable/ic_menu_gallery" />
@@ -199,7 +199,7 @@
             android:layout_height="70dp"
             android:layout_alignTop="@+id/pic2"
             android:layout_marginStart="210dp"
-            android:layout_marginTop="400dp"
+            android:layout_marginTop="410dp"
             android:layout_toEndOf="@+id/pic2"
             android:visibility="invisible"
             app:srcCompat="@drawable/ic_menu_gallery" />
@@ -210,7 +210,7 @@
             android:layout_height="70dp"
             android:layout_alignTop="@+id/pic3"
             android:layout_marginStart="300dp"
-            android:layout_marginTop="400dp"
+            android:layout_marginTop="410dp"
             android:layout_toEndOf="@+id/pic3"
             android:visibility="invisible"
             app:srcCompat="@drawable/ic_menu_gallery" />

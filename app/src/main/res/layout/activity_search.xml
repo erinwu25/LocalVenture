@@ -12,4 +12,13 @@
         android:id="@+id/autocomplete_fragment"
         android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"></fragment>
 
+    <Button
+        android:id="@+id/btnReturnSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="266dp"
+        android:text="Search" />
+
 </RelativeLayout>
