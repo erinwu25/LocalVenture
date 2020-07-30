@@ -83,7 +83,7 @@ public class StreamFragment extends Fragment {
 
     }
 
-    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT) {
         @Override
         // this method only used to rearrange recycler view rows (so we can ignore this)
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
@@ -95,13 +95,14 @@ public class StreamFragment extends Fragment {
             ParseUser currentUser = ParseUser.getCurrentUser();
             ArrayList<Listing> savedListings;
             int position = viewHolder.getAdapterPosition();
+            Object saved = currentUser.get("savedListings");
+            // if left swiped, add to saved
             if (direction == ItemTouchHelper.LEFT) {
-                Object saved = currentUser.get("savedListings");
                 if (saved == null) {
                     savedListings = new ArrayList<>();
                 }
                 else {
-                    savedListings = (ArrayList<Listing>) currentUser.get("savedListings");
+                    savedListings = (ArrayList<Listing>) saved;
                 }
                 boolean added = false;
                 Listing toAdd = listingList.get(position);
@@ -125,6 +126,37 @@ public class StreamFragment extends Fragment {
                 }
                 else { Toast.makeText(getContext(), "Already Saved", Toast.LENGTH_SHORT).show(); }
             }
+            // if right swiped, remove from saved
+            else if (direction == ItemTouchHelper.RIGHT) {
+                if (saved == null) {
+                    // if nothing saved
+                    Toast.makeText(getContext(), "Nothing to unsave", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                savedListings = (ArrayList<Listing>) saved;
+                int inList = -1;
+                Listing toUnsave = listingList.get(position);
+                for (int j = 0; j < savedListings.size(); j++) {
+                    // swiped listing is saved, note index to remove
+                    if (savedListings.get(j).getObjectId().equals(toUnsave.getObjectId())) {
+                        inList = j;
+                        break;
+                    }
+                }
+                // if listing to unsave was found in list, removce from list
+                if (inList != -1) {
+                    savedListings.remove(inList);
+                    currentUser.put("savedListings", savedListings);
+                    currentUser.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            Toast.makeText(getContext(), "Listing Unsaved!", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else {
+                    Toast.makeText(getContext(), "Not in saved list", Toast.LENGTH_SHORT).show();
+                }
+            }
         }
 
         @Override
@@ -133,6 +165,8 @@ public class StreamFragment extends Fragment {
             new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX/4, dY, actionState, isCurrentlyActive)
                     .addSwipeLeftBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorAccent))
                     .addSwipeLeftActionIcon(R.drawable.ic_baseline_bookmark_24)
+                    .addSwipeRightBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorAccent))
+                    .addSwipeRightActionIcon(R.drawable.ic_baseline_bookmark_border_24)
                     .create()
                     .decorate();
 
