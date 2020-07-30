@@ -58,4 +58,12 @@ dependencies {
 
     // google places sdk
     implementation 'com.google.android.libraries.places:places:2.3.0'
+
+    // material dependency
+    implementation 'com.google.android.material:material:<version>'
+
+    // https://github.com/xabaras/RecyclerViewSwipeDecorator
+    // library for easy swipe background on recyclerview
+    implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.3'
+
 }

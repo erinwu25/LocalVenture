@@ -45,13 +45,13 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        MenuItem search = menu.findItem(R.id.search);
-
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        // determine what to do based on selected item
         switch (item.getItemId()) {
             case R.id.LogOut:
                 logout();
@@ -62,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.clearSearch:
                 clearSearchFilters();
+                break;
+            case R.id.savedListings:
+                Intent toSaved = new Intent(this, SavedListings.class);
+                startActivity(toSaved);
         }
         return super.onOptionsItemSelected(item);
     }

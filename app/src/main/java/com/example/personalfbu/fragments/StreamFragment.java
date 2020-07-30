@@ -1,11 +1,15 @@
 package com.example.personalfbu.fragments;
 
+import android.content.Context;
+import android.graphics.Canvas;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.personalfbu.Listing;
 import com.example.personalfbu.ListingAdapter;
@@ -21,9 +26,13 @@ import com.example.personalfbu.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 
 public class StreamFragment extends Fragment {
@@ -67,7 +76,69 @@ public class StreamFragment extends Fragment {
 
         // query listings
         queryListings();
+
+        // Item touch helper for swiping (gesture recognizer)
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(rvStream);
+
     }
+
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+        @Override
+        // this method only used to rearrange recycler view rows (so we can ignore this)
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            ParseUser currentUser = ParseUser.getCurrentUser();
+            ArrayList<Listing> savedListings;
+            int position = viewHolder.getAdapterPosition();
+            if (direction == ItemTouchHelper.LEFT) {
+                Object saved = currentUser.get("savedListings");
+                if (saved == null) {
+                    savedListings = new ArrayList<>();
+                }
+                else {
+                    savedListings = (ArrayList<Listing>) currentUser.get("savedListings");
+                }
+                boolean added = false;
+                Listing toAdd = listingList.get(position);
+                for (int i=0; i<savedListings.size(); i++) {
+                    if (savedListings.get(i).getObjectId().equals(toAdd.getObjectId())) {
+                        added = true;
+                        break;
+                    }
+                }
+                if (!added) {
+                    savedListings.add(toAdd);
+                    currentUser.put("savedListings", savedListings);
+                    currentUser.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            if (e==null) {
+                                Toast.makeText(getContext(), "Listing Saved!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+                else { Toast.makeText(getContext(), "Already Saved", Toast.LENGTH_SHORT).show(); }
+            }
+        }
+
+        @Override
+        public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+
+            new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX/4, dY, actionState, isCurrentlyActive)
+                    .addSwipeLeftBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorAccent))
+                    .addSwipeLeftActionIcon(R.drawable.ic_baseline_bookmark_24)
+                    .create()
+                    .decorate();
+
+            super.onChildDraw(c, recyclerView, viewHolder, dX/4, dY, actionState, isCurrentlyActive);
+        }
+    };
 
     private void queryListings() {
         // specify which class to query
@@ -90,8 +161,8 @@ public class StreamFragment extends Fragment {
                    // log issue getting listings
                    return;
                }
-               // log that i'm getting data
 
+               // add data to list and notify adapter
                listingList.addAll(listings);
                masterList.addAll(listings);
                adapter.notifyDataSetChanged();
@@ -99,15 +170,4 @@ public class StreamFragment extends Fragment {
         });
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-//        adapter.notifyDataSetChanged();
-//        for (int i = 0; i < listingList.size(); i++) {
-//            Log.d("STream", listingList.get(i).getUser().getUsername());
-//            Log.d("STream", "if exists: "+listingList.get(i).getUser().getParseFile("profileImg"));
-//        }
-//        listingList.clear();
-//        adapter.notifyDataSetChanged();
-    }
 }

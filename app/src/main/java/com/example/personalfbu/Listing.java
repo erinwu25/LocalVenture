@@ -17,7 +17,6 @@ public class Listing extends ParseObject {
     public static final String KEY_IMAGES = "ImgArray";
     public static final String KEY_USER = "Creator";
     public static final String KEY_CREATED_KEY = "createdAt";
-    public static final String KEY_Availability = "Availability";
     public static final String KEY_startDate = "startDate";
     public static final String KEY_endDate = "endDate";
 
@@ -57,8 +56,6 @@ public class Listing extends ParseObject {
         String endDate = DateFormat.getDateInstance().format(cEnd.getTime());
         return startDate + " - " + endDate;
     }
-
-    public void setAvailability(String availability) { put(KEY_Availability, availability); }
 
     public Date getStartDate() { return getDate(KEY_startDate); }
 

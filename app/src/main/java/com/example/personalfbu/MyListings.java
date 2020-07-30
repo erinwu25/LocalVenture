@@ -27,7 +27,10 @@ public class MyListings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_stream);
 
+        // find elements
         rvStream = findViewById(R.id.rvStream);
+
+        // create list and set adapter on list
         listingList = new ArrayList<>();
         adapter = new ListingAdapter(MyListings.this, listingList);
         rvStream.setAdapter(adapter);

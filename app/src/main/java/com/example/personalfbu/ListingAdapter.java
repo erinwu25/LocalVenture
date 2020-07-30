@@ -53,7 +53,11 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHold
         // get data
         Listing listing = listings.get(position);
         // bind listing with view holder
-        holder.bind(listing);
+        try {
+            holder.bind(listing);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -100,14 +104,15 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHold
             }
         }
 
-        public void bind(Listing listing) {
-            tvListingName.setText(listing.getUser().getString("Name"));
+        public void bind(Listing listing) throws ParseException {
+            // fetch data and bind
+            ParseUser u = ((Listing)listing.fetchIfNeeded()).getUser().fetchIfNeeded();
+            tvListingName.setText((u.getString("Name")));
             queryRatings(listing.getUser());
-            tvListingDate.setText(ListingDetails.getRelativeTimeAgo(listing.getKeyCreatedKey().toString()));
-
+            tvListingDate.setText(ListingDetails.getRelativeTimeAgo(((Listing)listing.fetchIfNeeded()).getKeyCreatedKey().toString()));
             // bind image
             ivListingProfileImg.setImageResource(R.drawable.ic_menu_compass);
-            ParseFile imgFile = listing.getUser().getParseFile("profileImg");
+            ParseFile imgFile = (u.getParseFile("profileImg"));
             if (imgFile != null) {
                 Glide.with(context)
                         .load(imgFile.getUrl())
@@ -143,7 +148,6 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHold
                     averageRatings(ratingResults);
                 }
             });
-
         }
 
         private void averageRatings(List<Review> ratingResults) {

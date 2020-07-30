@@ -12,6 +12,10 @@
         android:title="Search"
         app:showAsAction="always" />
     <item
+        android:id="@+id/savedListings"
+        android:title="Saved Listings"
+        app:showAsAction="withText" />
+    <item
         android:id="@+id/LogOut"
         android:title="Log Out"
         app:showAsAction="never" />
