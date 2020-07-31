@@ -66,4 +66,5 @@ dependencies {
     // library for easy swipe background on recyclerview
     implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.3'
 
+
 }

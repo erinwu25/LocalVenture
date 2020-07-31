@@ -1,5 +1,6 @@
 package com.example.personalfbu.fragments;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Bundle;
@@ -201,8 +202,7 @@ public class StreamFragment extends Fragment {
                    Toast.makeText(getContext(), "Error getting listings", Toast.LENGTH_SHORT).show();
                    return;
                }
-
-               // add data to list and notify adapter
+                // add data to list and notify adapter
                listingList.addAll(listings);
                masterList.addAll(listings);
                adapter.notifyDataSetChanged();

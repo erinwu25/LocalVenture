@@ -147,6 +147,20 @@ public class CreateFragment extends Fragment implements DatePickerDialog.OnDateS
         btnComposeSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // check user details for validity
+                if (currentUser.get("Name") == null) {
+                    Toast.makeText(getContext(), "Please fill out your name in profile details before posting", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (currentUser.get("location") == null) {
+                    Toast.makeText(getContext(), "Please fill out your location in profile details before posting", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (currentUser.get("Bio") == null) {
+                    Toast.makeText(getContext(), "Please fill out your bio in profile details before posting", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                // checking listing details for validity
                 String blurb = etComposeBlurb.getText().toString();
                 if (blurb.isEmpty()) {
                     Toast.makeText(getContext(), "Blurb cannot be empty", Toast.LENGTH_SHORT).show();
