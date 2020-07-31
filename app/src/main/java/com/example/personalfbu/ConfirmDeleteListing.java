@@ -29,7 +29,7 @@ public class ConfirmDeleteListing extends AppCompatDialogFragment {
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        // do nothing
                     }
                 })
                 .setPositiveButton("Delete", new DialogInterface.OnClickListener() {

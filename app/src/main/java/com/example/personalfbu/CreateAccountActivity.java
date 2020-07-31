@@ -63,7 +63,7 @@ public class CreateAccountActivity extends AppCompatActivity {
             @Override
             public void done(ParseException e) {
                 if (e != null) {
-                    Toast.makeText(CreateAccountActivity.this, "Issue creating account", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateAccountActivity.this, "Issue creating account. Please try again", Toast.LENGTH_SHORT).show();
                 }
             }
         });

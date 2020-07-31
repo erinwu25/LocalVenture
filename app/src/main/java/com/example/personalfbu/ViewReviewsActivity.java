@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -72,6 +73,7 @@ public class ViewReviewsActivity extends AppCompatActivity {
             public void done(List<Review> reviews, ParseException e) {
                 if (e != null) {
                     // log issue getting listings
+                    Log.e("ViewReviewsActivity", "Error querying listings", e);
                     return;
                 }
 

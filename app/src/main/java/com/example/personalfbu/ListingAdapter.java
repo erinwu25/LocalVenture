@@ -141,6 +141,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHold
                 public void done(List<Review> reviews, ParseException e) {
                     if (e != null) {
                         // log issue getting listings
+                        Log.e("ListingAdapter", "Error querying results", e);
                         return;
                     }
                     ratingResults.addAll(reviews);

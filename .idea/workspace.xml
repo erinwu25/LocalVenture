@@ -20,23 +20,14 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/AddReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/AddReview.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/ConfirmDeleteListing.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/ConfirmDeleteListing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/CreateAccountActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/CreateAccountActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/DatePickerFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/DatePickerFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/EditListingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/EditListingActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/EditProfileActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/EditProfileActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/ListingAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/ListingAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/ListingDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/ListingDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/LoginActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/MyListings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/MyListings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/PersonalApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/PersonalApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/RatingHolder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/Review.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/ReviewAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/ReviewAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/SavedListings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/SavedListings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/SearchActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/SearchActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/ViewReviewsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/ViewReviewsActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/fragments/CreateFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/fragments/CreateFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/fragments/ProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/fragments/ProfileFragment.java" afterDir="false" />
@@ -192,31 +183,31 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="308" y="212" key="AndroidCreateResourceFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1595866674398" />
-    <state width="1398" height="281" key="GridCell.Tab.0.bottom" timestamp="1596148233541">
+    <state width="1398" height="281" key="GridCell.Tab.0.bottom" timestamp="1596223286326">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="281" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1596148233541" />
+    <state width="1398" height="281" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1596223286326" />
     <state width="1398" height="108" key="GridCell.Tab.0.bottom/0.23.1440.822@0.23.1440.822" timestamp="1596058247534" />
     <state width="903" height="174" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1595437806302" />
     <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.23.1440.825@0.23.1440.825" timestamp="1594679533007" />
-    <state width="1398" height="281" key="GridCell.Tab.0.center" timestamp="1596148233539">
+    <state width="1398" height="281" key="GridCell.Tab.0.center" timestamp="1596223286325">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="281" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1596148233539" />
+    <state width="1398" height="281" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1596223286325" />
     <state width="1398" height="108" key="GridCell.Tab.0.center/0.23.1440.822@0.23.1440.822" timestamp="1596058247533" />
     <state width="903" height="174" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1595437806301" />
     <state width="1398" height="245" key="GridCell.Tab.0.center/0.23.1440.825@0.23.1440.825" timestamp="1594679533006" />
-    <state width="1398" height="281" key="GridCell.Tab.0.left" timestamp="1596148233538">
+    <state width="1398" height="281" key="GridCell.Tab.0.left" timestamp="1596223286324">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="281" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1596148233538" />
+    <state width="1398" height="281" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1596223286324" />
     <state width="1398" height="108" key="GridCell.Tab.0.left/0.23.1440.822@0.23.1440.822" timestamp="1596058247533" />
     <state width="903" height="174" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1595437806300" />
     <state width="1398" height="245" key="GridCell.Tab.0.left/0.23.1440.825@0.23.1440.825" timestamp="1594679533005" />
-    <state width="1398" height="281" key="GridCell.Tab.0.right" timestamp="1596148233540">
+    <state width="1398" height="281" key="GridCell.Tab.0.right" timestamp="1596223286325">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="281" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1596148233540" />
+    <state width="1398" height="281" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1596223286325" />
     <state width="1398" height="108" key="GridCell.Tab.0.right/0.23.1440.822@0.23.1440.822" timestamp="1596058247534" />
     <state width="903" height="174" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1595437806301" />
     <state width="1398" height="245" key="GridCell.Tab.0.right/0.23.1440.825@0.23.1440.825" timestamp="1594679533006" />

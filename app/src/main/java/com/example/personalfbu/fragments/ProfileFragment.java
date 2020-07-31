@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -167,6 +168,7 @@ public class ProfileFragment extends Fragment {
             public void done(List<Review> reviews, ParseException e) {
                 if (e != null) {
                     // log issue getting listings
+                    Log.e("ProfileFragment", "Error querying ratings", e);
                     return;
                 }
                ratingResults.addAll(reviews);
@@ -192,7 +194,6 @@ public class ProfileFragment extends Fragment {
                    Bitmap profImg = BitmapFactory.decodeByteArray(data.getByteArrayExtra("img"), 0, data.getByteArrayExtra("img").length);
                    ivProfileImg.setImageBitmap(profImg);
                }
-
         }
     }
 }

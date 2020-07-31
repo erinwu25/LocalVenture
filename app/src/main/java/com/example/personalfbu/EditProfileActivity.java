@@ -258,7 +258,7 @@ public class EditProfileActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) { // taken photo
+        if ((data != null) && requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) { // taken photo
             if (resultCode == RESULT_OK) {
                 // by this point we have the camera photo on disk
                 takenImage = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
@@ -313,7 +313,8 @@ public class EditProfileActivity extends AppCompatActivity {
             chosePhoto = true;
         }
         else {
-            // Result was a failure
+            // if data is null
+            Toast.makeText(EditProfileActivity.this, "Profile photo not set", Toast.LENGTH_SHORT).show();
         }
     }
 

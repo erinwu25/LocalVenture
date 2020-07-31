@@ -13,11 +13,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.personalfbu.fragments.CreateFragment;
 import com.example.personalfbu.fragments.ProfileFragment;
 import com.example.personalfbu.fragments.StreamFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseUser;
 
@@ -71,13 +73,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void logout() {
-        // log out
-        ParseUser.logOut();
+        try {
+            // log out
+            ParseUser.logOut();
 
-        // go back to login page
-        Intent toLogin = new Intent(this, LoginActivity.class);
-        startActivity(toLogin);
-        finish();
+            // go back to login page
+            Intent toLogin = new Intent(this, LoginActivity.class);
+            startActivity(toLogin);
+            finish();
+        }
+        catch (Exception e) {
+            Toast.makeText(MainActivity.this, "Error logging out. Please try again", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

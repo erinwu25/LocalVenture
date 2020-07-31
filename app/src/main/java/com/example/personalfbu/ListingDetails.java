@@ -390,7 +390,7 @@ public class ListingDetails extends AppCompatActivity implements ConfirmDeleteLi
         super.onActivityResult(requestCode, resultCode, data);
 
         // check if request code is the same as result code
-        if(requestCode == 10) {
+        if((data != null) && requestCode == 10) {
             tvDetailsBlurb.setText(data.getStringExtra("blurb"));
             tvDetailsAvailability.setText("Available " + data.getStringExtra("start") + " - " + data.getStringExtra("end"));
         }
@@ -409,7 +409,7 @@ public class ListingDetails extends AppCompatActivity implements ConfirmDeleteLi
             relativeDate = DateUtils.getRelativeTimeSpanString(dateMillis,
                     System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS, flag).toString();
         } catch (ParseException e) {
-            e.printStackTrace();
+            Log.d("ListingDetails", "Error formatting date", e);
         }
 
         return relativeDate;
@@ -456,6 +456,7 @@ public class ListingDetails extends AppCompatActivity implements ConfirmDeleteLi
             public void done(List<Review> reviews, com.parse.ParseException e) {
                 if (e != null) {
                     // log issue getting listings
+                    Log.e("ListingDetails", "Error querying ratings", e);
                     return;
                 }
                 ratingResults.addAll(reviews);

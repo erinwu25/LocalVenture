@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -43,7 +44,8 @@ public class SavedListings extends AppCompatActivity {
         try {
             populateSaved();
         } catch (ParseException e) {
-            e.printStackTrace();
+            Log.e("SavedListings", "Error populating list", e);
+            Toast.makeText(SavedListings.this, "Error showing saved listings", Toast.LENGTH_SHORT).show();
         }
     }
 

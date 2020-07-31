@@ -178,8 +178,8 @@ public class CreateFragment extends Fragment implements DatePickerDialog.OnDateS
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         // if returning from selecting photos
-        if (requestCode == PICK_PHOTO_CODE) {
-            if (data.getClipData() != null && (data.getClipData().getItemCount() <= 4)) {
+        if ((data != null) && requestCode == PICK_PHOTO_CODE) {
+            if ((data.getClipData() != null) && (data.getClipData().getItemCount() <= 4)) {
                 ClipData mClipData = data.getClipData();
                 ArrayList<Uri> mArrayUri = new ArrayList<Uri>();
                 mBitmapsSelected = new ArrayList<Bitmap>();

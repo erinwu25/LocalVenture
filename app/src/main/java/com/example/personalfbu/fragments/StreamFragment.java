@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.personalfbu.EditProfileActivity;
 import com.example.personalfbu.Listing;
 import com.example.personalfbu.ListingAdapter;
 import com.example.personalfbu.MainActivity;
@@ -120,6 +121,7 @@ public class StreamFragment extends Fragment {
                             if (e==null) {
                                 Toast.makeText(getContext(), "Listing Saved!", Toast.LENGTH_SHORT).show();
                             }
+                            else { Toast.makeText(getContext(), "Error saving listing", Toast.LENGTH_SHORT).show();}
                         }
                     });
                 }
@@ -149,10 +151,12 @@ public class StreamFragment extends Fragment {
                     currentUser.saveInBackground(new SaveCallback() {
                         @Override
                         public void done(ParseException e) {
-                            Toast.makeText(getContext(), "Listing Unsaved!", Toast.LENGTH_SHORT).show();
+                            if (e != null) { Toast.makeText(getContext(), "Error saving listing", Toast.LENGTH_SHORT).show(); }
+                            else { Toast.makeText(getContext(), "Listing Unsaved!", Toast.LENGTH_SHORT).show(); }
                         }
                     });
-                } else {
+                }
+                else {
                     Toast.makeText(getContext(), "Not in saved list", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -194,6 +198,7 @@ public class StreamFragment extends Fragment {
             public void done(List<Listing> listings, ParseException e) {
                if (e != null) {
                    // log issue getting listings
+                   Toast.makeText(getContext(), "Error getting listings", Toast.LENGTH_SHORT).show();
                    return;
                }
 

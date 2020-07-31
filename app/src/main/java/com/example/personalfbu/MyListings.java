@@ -1,6 +1,7 @@
 package com.example.personalfbu;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -68,10 +69,10 @@ public class MyListings extends AppCompatActivity {
             public void done(List<Listing> listings, ParseException e) {
                 if (e != null) {
                     // log issue getting listings
+                    Log.e("MyListings", "Error querying listings", e);
                     return;
                 }
-                // log that i'm getting data
-
+                // add listings to recyclerview and bind
                 listingList.addAll(listings);
                 adapter.notifyDataSetChanged();
             }
