@@ -74,8 +74,8 @@ public class ViewReviewsActivity extends AppCompatActivity {
                     // log issue getting listings
                     return;
                 }
-                // log that i'm getting data
 
+                // add reviews to list and populate recyclerview
                 reviewList.addAll(reviews);
                 adapter.notifyDataSetChanged();
             }

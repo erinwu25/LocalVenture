@@ -51,7 +51,6 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -65,6 +64,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
         }
 
         public void bind(Review review) {
+            // populate listing item with information
             tvFromUserName.setText(review.getFromUser().getString("Name"));
             tvFromUserRating.setText(String.valueOf(review.getRating()) + "/5");
             tvFromUserContent.setText(review.getReviewContent());

@@ -122,7 +122,6 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHold
         }
 
         public void queryRatings(ParseUser user) {
-            Log.d("queryRatings", user.toString());
             ratingResults.clear();
             // specify which class to query
             ParseQuery<Review> query = ParseQuery.getQuery(Review.class);

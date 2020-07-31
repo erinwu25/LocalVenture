@@ -88,7 +88,6 @@ public class EditProfileActivity extends AppCompatActivity {
         // Specify the types of place data to return.
         autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ADDRESS_COMPONENTS, Place.Field.NAME, Place.Field.LAT_LNG));
 
-
         // find elements on view
         etEditName = findViewById(R.id.etEditName);
         etEditEmail = findViewById(R.id.etEditEmail);
@@ -122,7 +121,6 @@ public class EditProfileActivity extends AppCompatActivity {
             prevImgUrl = prevImg.getUrl();
             Glide.with(EditProfileActivity.this)
                     .load(prevImgUrl)
-//                    .transform(new RoundedCornersTransformation(15, 3))
                     .into(ivEditImg);
         }
 
@@ -138,11 +136,9 @@ public class EditProfileActivity extends AppCompatActivity {
                     c = addressComponentList.get(i);
                     if(c.getTypes().contains("administrative_area_level_1")) {
                         location += ", " + c.getShortName();
-                        Log.d("EditProfileActivity", place.getName() + ", " + c.getShortName());
                     }
                     if(c.getTypes().contains("country")) {
                         location += ", " + c.getName();
-                        Log.d("EditProfileActivity", place.getName() + ", " + c.getName());
                     }
                 }
                 geopoint = new ParseGeoPoint(place.getLatLng().latitude, place.getLatLng().longitude);
@@ -296,7 +292,6 @@ public class EditProfileActivity extends AppCompatActivity {
                 }
 
                 // store the path to that resized image
-                // WHAT IS THIS????
                 takenImage = BitmapFactory.decodeFile(resizedFile.getAbsolutePath());
 
                 // Load the taken image into a preview
@@ -314,15 +309,11 @@ public class EditProfileActivity extends AppCompatActivity {
             // scale image to downsize
             selectedImage = BitmapScaler.scaleToFitWidth(selectedImage, 100);
 
-            // Load the selected image into a preview
-//                ImageView ivPreview = (ImageView) findViewById(R.id.ivPreview);
-//                ivPreview.setImageBitmap(selectedImage);
-
             ivEditImg.setImageBitmap(selectedImage);
             chosePhoto = true;
         }
-        else { // Result was a failure
-
+        else {
+            // Result was a failure
         }
     }
 

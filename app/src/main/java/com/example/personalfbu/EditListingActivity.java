@@ -48,8 +48,6 @@ public class EditListingActivity extends AppCompatActivity implements DatePicker
         btnEditStart = findViewById(R.id.btnEditStart);
         btnEditEnd = findViewById(R.id.btnEditEnd);
 
-
-
         // get current user
         currentUser = ParseUser.getCurrentUser();
 
@@ -81,7 +79,7 @@ public class EditListingActivity extends AppCompatActivity implements DatePicker
             }
         });
 
-
+        // save changes
         btnEditListingSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,7 +93,7 @@ public class EditListingActivity extends AppCompatActivity implements DatePicker
                     return;
                 }
                 // save changes and return
-                saveListingChanges(currentUser, listing, blurb);
+                saveListingChanges(listing, blurb);
                 Intent backToListing = new Intent(EditListingActivity.this, ListingDetails.class);
                 backToListing.putExtra("blurb", blurb);
                 backToListing.putExtra("start", readableDate(startDateResult));
@@ -107,7 +105,7 @@ public class EditListingActivity extends AppCompatActivity implements DatePicker
         });
     }
 
-    private void saveListingChanges(ParseUser currentUser, Listing listing, String blurb) {
+    private void saveListingChanges(Listing listing, String blurb) {
         listing.setBlurb(blurb);
         listing.setStartDate(startDateResult);
         listing.setEndDate(endDateResult);
@@ -125,6 +123,7 @@ public class EditListingActivity extends AppCompatActivity implements DatePicker
         });
     }
 
+    // returns date in string form
     public String readableDate(Date date) {
         Calendar c = Calendar.getInstance();
         c.setTime(date);

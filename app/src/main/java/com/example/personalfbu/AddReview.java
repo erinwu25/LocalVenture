@@ -80,7 +80,6 @@ public class AddReview extends AppCompatActivity {
         else if (ratingNum == rb3.getId()) { rating = 3; }
         else if (ratingNum == rb4.getId()) { rating = 4; }
         else {rating = 5; }
-//        newReview.setRating(rating, toUser);
         newReview.setReviewRating(rating);
         newReview.saveInBackground(new SaveCallback() {
             @Override

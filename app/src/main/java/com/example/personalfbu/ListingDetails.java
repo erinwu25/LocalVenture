@@ -438,7 +438,6 @@ public class ListingDetails extends AppCompatActivity implements ConfirmDeleteLi
     }
 
     public void queryRatings(ParseUser user) {
-
         // specify which class to query
         ParseQuery<Review> query = ParseQuery.getQuery(Review.class);
 

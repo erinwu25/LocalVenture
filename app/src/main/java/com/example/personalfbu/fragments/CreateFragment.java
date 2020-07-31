@@ -156,13 +156,17 @@ public class CreateFragment extends Fragment implements DatePickerDialog.OnDateS
                     Toast.makeText(getContext(), "Please add your availability", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if(startDateResult.after(endDateResult) && (!(startDateResult.compareTo(endDateResult)==0))) {
+                    Toast.makeText(getContext(), "Start date must be before end date", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 saveListing(currentUser, blurb);
             }
         });
     }
 
 
-
+    // for selecting images
     private void onPickImgs() {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
@@ -173,6 +177,7 @@ public class CreateFragment extends Fragment implements DatePickerDialog.OnDateS
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        // if returning from selecting photos
         if (requestCode == PICK_PHOTO_CODE) {
             if (data.getClipData() != null && (data.getClipData().getItemCount() <= 4)) {
                 ClipData mClipData = data.getClipData();
@@ -213,6 +218,7 @@ public class CreateFragment extends Fragment implements DatePickerDialog.OnDateS
         }
     }
 
+    // load selected photos from uri
     private Bitmap loadFromUri(Uri uri) {
         Bitmap image = null;
         try {
@@ -232,6 +238,7 @@ public class CreateFragment extends Fragment implements DatePickerDialog.OnDateS
     }
 
     private void saveListing(ParseUser currentUser, String blurb) {
+        // create new listing and set attributes
         Listing newListing = new Listing();
         newListing.setUser(currentUser);
         newListing.setBlurb(blurb);
@@ -241,6 +248,7 @@ public class CreateFragment extends Fragment implements DatePickerDialog.OnDateS
             newListing.setImages(filesSelected);
         }
 
+        // save listing to database
         newListing.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {

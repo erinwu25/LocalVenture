@@ -56,12 +56,8 @@ public class SavedListings extends AppCompatActivity {
 
         // cast to arraylist
         ArrayList<Listing> savedListings = (ArrayList<Listing>) saved;
-        Log.d("SavedListings", String.valueOf(savedListings.size()));
-//        for ( int i = 0; i < savedListings.size(); i++) {
-//            Listing l = savedListings.get(i);
-//            Log.d("SavedListings", String.valueOf(((Listing)l.fetchIfNeeded()).getUser()));
-//        }
 
+        // populate recycler view with saved listings
         listingList.addAll(savedListings);
         adapter.notifyDataSetChanged();
 

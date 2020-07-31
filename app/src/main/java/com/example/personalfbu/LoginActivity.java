@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,20 +30,22 @@ public class LoginActivity extends AppCompatActivity {
             goMainActivity();
         }
 
+        // find elements in view
         etUsername = findViewById(R.id.etCreateUsername);
         etPassword = findViewById(R.id.etCreatePassword);
         btnLogin = findViewById(R.id.btnLogin);
+        btnCreateAccount = findViewById(R.id.btnCreateAccount);
+
+        // click listeners for login and create account
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i(TAG, "OnClick login button");
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
                 loginUser(username, password);
             }
 
         });
-        btnCreateAccount = findViewById(R.id.btnCreateAccount);
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,14 +57,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser(String username, String password) {
-        Log.i(TAG, "Attempting to login user" + username);
-
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
                 if(e != null) {
-                    // TODO: better error handling
-                    Log.e(TAG, "Error with Login", e);
+                    Toast.makeText(LoginActivity.this, "Error with login. Please try again", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 // navigate to main activity if user has signed in properly

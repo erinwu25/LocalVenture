@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+// to confirm deleting a listing
 public class ConfirmDeleteListing extends AppCompatDialogFragment {
 
     private ConfirmDeleteListingListener listener;
@@ -18,8 +19,6 @@ public class ConfirmDeleteListing extends AppCompatDialogFragment {
     // necessary empty constructor
     public ConfirmDeleteListing() {
     }
-
-    //
 
     @NonNull
     @Override

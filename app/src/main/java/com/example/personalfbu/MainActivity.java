@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
     private void logout() {
         // log out
         ParseUser.logOut();
-        ParseUser currentUser = ParseUser.getCurrentUser();  // will be null
 
         // go back to login page
         Intent toLogin = new Intent(this, LoginActivity.class);
@@ -86,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // create tab navigation and determine what to display based on tab
         bottomNavigationView = findViewById(R.id.bottomNavigation);
-
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -106,16 +105,17 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new StreamFragment();
                         break;
                 }
+                // set chosen fragment to display
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
                 return true;
             }
         });
-
         // Set default selection
         bottomNavigationView.setSelectedItemId(R.id.actionStream);
 
     }
 
+    // clear the search filters and display original list
     private void clearSearchFilters() {
         StreamFragment fragInst = (StreamFragment) fragmentManager.findFragmentById(R.id.flContainer);
         if (fragInst != null) {
@@ -149,13 +149,14 @@ public class MainActivity extends AppCompatActivity {
                     Date endDate = new Date();
                     startDate.setTime(data.getLongExtra("startDate", -1));
                     endDate.setTime(data.getLongExtra("endDate", -1));
-                    filterDate(fragInst.adapter, fragInst.listingList, fragInst.masterList, startDate, endDate);
+                    filterDate(fragInst.adapter, fragInst.listingList, startDate, endDate);
                 }
             }
         }
     }
 
-    private void filterDate(ListingAdapter adapter, List<Listing> listingList, List<Listing> masterList, Date startDate, Date endDate) {
+    // filter listings by dates
+    private void filterDate(ListingAdapter adapter, List<Listing> listingList, Date startDate, Date endDate) {
         List<Listing> inDate = new ArrayList<>();
         Listing item;
         Date listingStart, listingEnd;
@@ -174,17 +175,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean overlapDates(Date startDate, Date endDate, Date listingStart, Date listingEnd) {
-        // from https://stackoverflow.com/questions/17106670/how-to-check-a-timeperiod-is-overlapping-another-time-period-in-java
+        // logic from https://stackoverflow.com/questions/17106670/how-to-check-a-timeperiod-is-overlapping-another-time-period-in-java
         return (!startDate.after(listingEnd) && !listingStart.after(endDate));
     }
 
 
+    // filter listings by location
     private void filterLocation(ListingAdapter adapter, List<Listing> listingList, List<Listing> masterList,
                                 double lat, double lng, int maxDistance) {
         Listing item;
         Double dist;
         List<Integer> newList = new ArrayList<>();
         ParseGeoPoint geo;
+
+        // for each listing, get coordinates and check if within range of the searched destination
         for (int i = 0; i<masterList.size(); i++) {
             item = masterList.get(i);
             geo = item.getUser().getParseGeoPoint("coordinates");
@@ -193,7 +197,8 @@ public class MainActivity extends AppCompatActivity {
                 newList.add(i);
             }
         }
-        // clear listing list
+
+        // clear listing list and add only those that are within the chosen range of the location
         listingList.clear();
         adapter.notifyDataSetChanged();
         for(Integer ind : newList) {

@@ -39,7 +39,6 @@ public class SearchActivity extends AppCompatActivity implements DatePickerDialo
     boolean endCurrent = false;
     Date startDateResult, endDateResult;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +83,6 @@ public class SearchActivity extends AppCompatActivity implements DatePickerDialo
                 placeName = place.getName();
                 lat = String.valueOf(place.getLatLng().latitude);
                 lng = String.valueOf(place.getLatLng().longitude);
-
             }
 
             @Override
@@ -124,6 +122,10 @@ public class SearchActivity extends AppCompatActivity implements DatePickerDialo
                     Toast.makeText(SearchActivity.this, "Please enter a start and end date ", Toast.LENGTH_LONG).show();
                     return;
                 }
+                if(startDateResult.after(endDateResult) && (!(startDateResult.compareTo(endDateResult)==0))) {
+                    Toast.makeText(SearchActivity.this, "End date must be at least the same or after start date", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 String dist = String.valueOf(getDistance());
                 Intent backToMain = new Intent(SearchActivity.this, MainActivity.class);
                 backToMain.putExtra("location", placeName);
@@ -138,9 +140,9 @@ public class SearchActivity extends AppCompatActivity implements DatePickerDialo
                 finish();
             }
         });
-
     }
 
+    // get the chosen distance
     private int getDistance(){
         int distanceNum = rgDist.getCheckedRadioButtonId();
         if (distanceNum == rb5m.getId()) { return 5; }

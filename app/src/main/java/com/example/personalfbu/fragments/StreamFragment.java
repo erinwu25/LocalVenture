@@ -41,7 +41,6 @@ public class StreamFragment extends Fragment {
     public ListingAdapter adapter;
     public List<Listing> listingList;
     public List<Listing> masterList;
-    private MainActivity mainActivity = (MainActivity)getActivity();
 
     // Required empty public constructor
     public StreamFragment() {}
@@ -143,7 +142,7 @@ public class StreamFragment extends Fragment {
                         break;
                     }
                 }
-                // if listing to unsave was found in list, removce from list
+                // if listing to unsave was found in list, remove from list
                 if (inList != -1) {
                     savedListings.remove(inList);
                     currentUser.put("savedListings", savedListings);
@@ -160,6 +159,7 @@ public class StreamFragment extends Fragment {
         }
 
         @Override
+        // for handling background and image to display on swipe
         public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
 
             new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX/4, dY, actionState, isCurrentlyActive)
@@ -173,6 +173,7 @@ public class StreamFragment extends Fragment {
             super.onChildDraw(c, recyclerView, viewHolder, dX/4, dY, actionState, isCurrentlyActive);
         }
     };
+
 
     private void queryListings() {
         // specify which class to query

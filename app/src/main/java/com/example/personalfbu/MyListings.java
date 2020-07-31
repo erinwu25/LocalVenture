@@ -40,10 +40,12 @@ public class MyListings extends AppCompatActivity {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvStream.getContext(), LinearLayoutManager.VERTICAL);
         rvStream.addItemDecoration(dividerItemDecoration);
 
+        // get all listings that are by the currently logged in user
         queryMyListings();
 
     }
 
+    // get all listings that are by the currently logged in user
     private void queryMyListings() {
         // specify which class to query
         ParseQuery<Listing> query = ParseQuery.getQuery(Listing.class);

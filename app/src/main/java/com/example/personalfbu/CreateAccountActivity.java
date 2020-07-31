@@ -34,7 +34,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         etCreateEmail = findViewById(R.id.etCreateEmail);
         btnSignUp = findViewById(R.id.btnSignUp);
 
-        //
+        // on click listener for signup
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,42 +64,8 @@ public class CreateAccountActivity extends AppCompatActivity {
             public void done(ParseException e) {
                 if (e != null) {
                     Toast.makeText(CreateAccountActivity.this, "Issue creating account", Toast.LENGTH_SHORT).show();
-                    Log.d("ahhh", "arghh", e);
-                }
-                else {
-//                    ParseACL newAcl = new ParseACL(user);
-//                    newAcl.setPublicWriteAccess(true);
                 }
             }
         });
-
-//        // create a rating holder for this user
-//        RatingHolder newRatingHolder = new RatingHolder();
-//        newRatingHolder.setRatingOwner(user);
-//        newRatingHolder.saveInBackground(new SaveCallback() {
-//            @Override
-//            public void done(ParseException e) {
-//                if (e!= null) {
-//                    Toast.makeText(CreateAccountActivity.this, "Issue creating account1", Toast.LENGTH_SHORT).show();
-//                    Log.e("CreateAccountActivity", "whyyy", e);
-//                }
-//                else {
-//                    // no error
-//                }
-//            }
-//        });
-
-        // set rating pointer to newly created ratingHolder
-//        user.put("Rating", newRatingHolder);
-//        user.saveInBackground(new SaveCallback() {
-//            @Override
-//            public void done(ParseException e) {
-//                if (e!=null) {
-//                    Toast.makeText(CreateAccountActivity.this, "Issue creating account2", Toast.LENGTH_SHORT).show();
-//                    Log.e("CreateAccountActivity", "Issuessss", e);
-//                }
-//            }
-//        });
-
     }
 }

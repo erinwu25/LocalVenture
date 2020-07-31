@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,22 +21,17 @@ import com.bumptech.glide.Glide;
 import com.example.personalfbu.EditProfileActivity;
 import com.example.personalfbu.MyListings;
 import com.example.personalfbu.R;
-import com.example.personalfbu.RatingHolder;
 import com.example.personalfbu.Review;
 import com.example.personalfbu.ViewReviewsActivity;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
-import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-
-import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class ProfileFragment extends Fragment {
 
@@ -91,15 +85,9 @@ public class ProfileFragment extends Fragment {
         if(image != null) {
             Glide.with(getContext())
                     .load(image.getUrl())
-//                    .transform(new RoundedCornersTransformation(15, 3))
                     .into(ivProfileImg);
         }
-
-        queryRatings(currentUser);
-
-
-
-        //////
+        queryRatings(currentUser);  // query and set average rating
         tvProfileLocation.setText("Location: " +currentUser.getString("location"));
         tvProfileBio.setText(currentUser.getString("Bio"));
         tvProfileEmail.setText("Contact: "+currentUser.getEmail());
@@ -113,7 +101,6 @@ public class ProfileFragment extends Fragment {
                 startActivityForResult(toEditProfile, 25);
             }
         });
-
 
         btnToReviews.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,8 +125,8 @@ public class ProfileFragment extends Fragment {
 
     }
 
+    // get all the rating numbers from the returned reviews and set the average rating
     private void averageRatings(List<Review> ratingResults) {
-        // get all the rating numbers from the returned reviews
         double ratingNums = 0.0;
         int numOfReviews = ratingResults.size();
         if (numOfReviews > 0) {
@@ -201,7 +188,7 @@ public class ProfileFragment extends Fragment {
                 tvProfileBio.setText(data.getStringExtra("bio"));
                 tvProfileEmail.setText(data.getStringExtra("email"));
 
-               if( data.hasExtra("img")) {
+               if(data.hasExtra("img")) {
                    Bitmap profImg = BitmapFactory.decodeByteArray(data.getByteArrayExtra("img"), 0, data.getByteArrayExtra("img").length);
                    ivProfileImg.setImageBitmap(profImg);
                }
