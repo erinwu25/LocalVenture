@@ -144,9 +144,14 @@ public class MainActivity extends AppCompatActivity {
             // filter based on location
             if (data.hasExtra("location")) {
                 if (fragInst != null) {
-                    filterLocation(fragInst.adapter, fragInst.listingList, fragInst.masterList,
-                            Double.parseDouble(data.getStringExtra("lat")), Double.parseDouble(data.getStringExtra("lng")),
-                            Integer.valueOf(data.getStringExtra("dist")));
+                    try {
+                        filterLocation(fragInst.adapter, fragInst.listingList, fragInst.masterList,
+                                Double.parseDouble(data.getStringExtra("lat")), Double.parseDouble(data.getStringExtra("lng")),
+                                Integer.valueOf(data.getStringExtra("dist")));
+                    }
+                    catch (Exception e) {
+                        Toast.makeText(MainActivity.this, "Error filtering by location. Please try again", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
             // filter based on date
@@ -156,7 +161,12 @@ public class MainActivity extends AppCompatActivity {
                     Date endDate = new Date();
                     startDate.setTime(data.getLongExtra("startDate", -1));
                     endDate.setTime(data.getLongExtra("endDate", -1));
-                    filterDate(fragInst.adapter, fragInst.listingList, startDate, endDate);
+                    try {
+                        filterDate(fragInst.adapter, fragInst.listingList, startDate, endDate);
+                    }
+                    catch (Exception e) {
+                        Toast.makeText(MainActivity.this, "Error filtering by date. Please try again", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         }

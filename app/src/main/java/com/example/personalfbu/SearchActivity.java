@@ -118,13 +118,15 @@ public class SearchActivity extends AppCompatActivity implements DatePickerDialo
                     Toast.makeText(SearchActivity.this, "Enter a city to search", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (!((startDateResult!=null) == (endDateResult!=null))) {
-                    Toast.makeText(SearchActivity.this, "Please enter a start and end date ", Toast.LENGTH_LONG).show();
-                    return;
-                }
-                if(startDateResult.after(endDateResult) && (!(startDateResult.compareTo(endDateResult)==0))) {
-                    Toast.makeText(SearchActivity.this, "End date must be at least the same or after start date", Toast.LENGTH_SHORT).show();
-                    return;
+                if (startDateResult != null) {
+                    if (!((startDateResult != null) == (endDateResult != null))) {
+                        Toast.makeText(SearchActivity.this, "Please enter a start and end date ", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    if (startDateResult.after(endDateResult) && (!(startDateResult.compareTo(endDateResult) == 0))) {
+                        Toast.makeText(SearchActivity.this, "End date must be at least the same or after start date", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                 }
                 String dist = String.valueOf(getDistance());
                 Intent backToMain = new Intent(SearchActivity.this, MainActivity.class);

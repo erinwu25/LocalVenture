@@ -66,5 +66,9 @@ dependencies {
     // library for easy swipe background on recyclerview
     implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.3'
 
+    // https://github.com/pantrif/EasySplashScreen
+    // easy splash screen for visual polish
+    implementation 'gr.pantrif:easy-android-splash-screen:0.0.1'
+
 
 }
