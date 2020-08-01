@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -29,6 +30,11 @@ public class ViewReviewsActivity extends AppCompatActivity {
 
         // find recycler view
         rvReviews = findViewById(R.id.rvReviews);
+
+        // set initial views
+        rvReviews.setVisibility(View.VISIBLE);
+        findViewById(R.id.avNoReviews).setVisibility(View.INVISIBLE);
+        findViewById(R.id.tvNoReviews).setVisibility(View.INVISIBLE);
 
         // initialize a list of listings and adapter
         reviewList = new ArrayList<>();
@@ -77,9 +83,17 @@ public class ViewReviewsActivity extends AppCompatActivity {
                     return;
                 }
 
-                // add reviews to list and populate recyclerview
-                reviewList.addAll(reviews);
-                adapter.notifyDataSetChanged();
+                if ((reviews == null) || reviews.size() == 0) {
+                    // set views if no results
+                    rvReviews.setVisibility(View.INVISIBLE);
+                    findViewById(R.id.avNoReviews).setVisibility(View.VISIBLE);
+                    findViewById(R.id.tvNoReviews).setVisibility(View.VISIBLE);
+                }
+                else {
+                    // add reviews to list and populate recyclerview
+                    reviewList.addAll(reviews);
+                    adapter.notifyDataSetChanged();
+                }
             }
         });
 

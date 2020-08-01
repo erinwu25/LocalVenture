@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.personalfbu.fragments.CreateFragment;
@@ -130,6 +131,10 @@ public class MainActivity extends AppCompatActivity {
             fragInst.adapter.notifyDataSetChanged();
             fragInst.listingList.addAll(fragInst.masterList);
             fragInst.adapter.notifyDataSetChanged();
+
+            findViewById(R.id.rvStream).setVisibility(View.VISIBLE);
+            findViewById(R.id.avNoResults).setVisibility(View.INVISIBLE);
+            findViewById(R.id.tvNoResult).setVisibility(View.INVISIBLE);
         }
     }
 
@@ -139,8 +144,15 @@ public class MainActivity extends AppCompatActivity {
 
         // check if request code is the same
         if ((data != null) &&requestCode == REQUEST_CODE) {
+
+            // set visibility
+            findViewById(R.id.rvStream).setVisibility(View.VISIBLE);
+            findViewById(R.id.avNoResults).setVisibility(View.INVISIBLE);
+            findViewById(R.id.tvNoResult).setVisibility(View.INVISIBLE);
+
             // get fragment instance
             StreamFragment fragInst = (StreamFragment) fragmentManager.findFragmentById(R.id.flContainer);
+
             // filter based on location
             if (data.hasExtra("location")) {
                 if (fragInst != null) {
@@ -218,10 +230,19 @@ public class MainActivity extends AppCompatActivity {
         // clear listing list and add only those that are within the chosen range of the location
         listingList.clear();
         adapter.notifyDataSetChanged();
-        for(Integer ind : newList) {
-            listingList.add(masterList.get(ind));
+
+        if (newList.size() == 0) {
+            // if no results, show animation
+            findViewById(R.id.rvStream).setVisibility(View.INVISIBLE);
+            findViewById(R.id.avNoResults).setVisibility(View.VISIBLE);
+            findViewById(R.id.tvNoResult).setVisibility(View.VISIBLE);
         }
-        adapter.notifyDataSetChanged();
+        else {
+            for (Integer ind : newList) {
+                listingList.add(masterList.get(ind));
+            }
+            adapter.notifyDataSetChanged();
+        }
     }
 
     // uses the great circle distance approach

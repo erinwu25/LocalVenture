@@ -2,6 +2,7 @@ package com.example.personalfbu;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +31,11 @@ public class MyListings extends AppCompatActivity {
 
         // find elements
         rvStream = findViewById(R.id.rvStream);
+
+        // set views initial default
+        rvStream.setVisibility(View.VISIBLE);
+        findViewById(R.id.avNoListings).setVisibility(View.INVISIBLE);
+        findViewById(R.id.tvNoListings).setVisibility(View.INVISIBLE);
 
         // create list and set adapter on list
         listingList = new ArrayList<>();
@@ -72,6 +78,14 @@ public class MyListings extends AppCompatActivity {
                     Log.e("MyListings", "Error querying listings", e);
                     return;
                 }
+
+                if ((listings == null) || listings.size() == 0) {
+                    // set views default
+                    rvStream.setVisibility(View.INVISIBLE);
+                    findViewById(R.id.avNoListings).setVisibility(View.VISIBLE);
+                    findViewById(R.id.tvNoListings).setVisibility(View.VISIBLE);
+                }
+
                 // add listings to recyclerview and bind
                 listingList.addAll(listings);
                 adapter.notifyDataSetChanged();

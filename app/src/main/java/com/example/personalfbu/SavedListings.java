@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.parse.ParseException;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +29,11 @@ public class SavedListings extends AppCompatActivity {
 
         // find recycler view
         rvStream = findViewById(R.id.rvStream);
+
+        // set visibility of views
+        rvStream.setVisibility(View.VISIBLE);
+        findViewById(R.id.avNoSaved).setVisibility(View.INVISIBLE);
+        findViewById(R.id.tvNoReviews).setVisibility(View.INVISIBLE);
 
         // create list and set adapter on list
         listingList = new ArrayList<>();
@@ -54,10 +59,24 @@ public class SavedListings extends AppCompatActivity {
         Object saved = ParseUser.getCurrentUser().get("savedListings");
 
         // check if null and if not proceed
-        if (saved == null) { return; }
+        if (saved == null) {
+            // set animation default
+            rvStream.setVisibility(View.INVISIBLE);
+            findViewById(R.id.avNoSaved).setVisibility(View.VISIBLE);
+            findViewById(R.id.tvNoReviews).setVisibility(View.VISIBLE);
+            return; }
 
         // cast to arraylist
         ArrayList<Listing> savedListings = (ArrayList<Listing>) saved;
+
+        // check if list is empty
+        if (savedListings.size() == 0) {
+            // set animation default
+            rvStream.setVisibility(View.INVISIBLE);
+            findViewById(R.id.avNoSaved).setVisibility(View.VISIBLE);
+            findViewById(R.id.tvNoReviews).setVisibility(View.VISIBLE);
+            return;
+        }
 
         // populate recycler view with saved listings
         listingList.addAll(savedListings);
