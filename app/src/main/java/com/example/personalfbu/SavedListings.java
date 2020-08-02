@@ -1,10 +1,12 @@
 package com.example.personalfbu;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -43,6 +45,8 @@ public class SavedListings extends AppCompatActivity {
 
         // dividers between recycler view items
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvStream.getContext(), LinearLayoutManager.VERTICAL);
+        Drawable verticalDivider = ContextCompat.getDrawable(SavedListings.this, R.drawable.vertical_divider);
+        dividerItemDecoration.setDrawable(verticalDivider);
         rvStream.addItemDecoration(dividerItemDecoration);
 
         // fill with saved listings

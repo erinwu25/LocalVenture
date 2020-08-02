@@ -26,7 +26,8 @@
         android:layout_marginTop="30dp"
         android:layout_toEndOf="@+id/ivDetailsImg"
         android:text="Name"
-        android:textColor="#000000"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp" />
 
     <TextView
@@ -38,7 +39,8 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="15dp"
         android:text="Rating"
-        android:textColor="#000000" />
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
         android:id="@+id/tvDetailsBlurbTitle"
@@ -49,7 +51,8 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="15dp"
         android:text="Description"
-        android:textColor="#000000" />
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
         android:id="@+id/tvDetailsBlurb"
@@ -59,7 +62,9 @@
         android:layout_alignStart="@+id/tvDetailsBlurbTitle"
         android:layout_marginStart="0dp"
         android:layout_marginTop="5dp"
-        android:text="Blurb" />
+        android:text="Blurb"
+        android:fontFamily="sans-serif-light"
+        />
 
     <TextView
         android:id="@+id/tvDetailsAvailability"
@@ -70,7 +75,8 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="15dp"
         android:text="Availability"
-        android:textColor="#000000" />
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
         android:id="@+id/tvDetailsLocation"
@@ -81,7 +87,8 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="15dp"
         android:text="Location"
-        android:textColor="#000000" />
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
         android:id="@+id/tvDetailsBioTitle"
@@ -92,7 +99,8 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="15dp"
         android:text="About this guide"
-        android:textColor="#000000" />
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
         android:id="@+id/tvDetailsBio"
@@ -102,7 +110,9 @@
         android:layout_alignStart="@+id/tvDetailsBioTitle"
         android:layout_marginStart="0dp"
         android:layout_marginTop="5dp"
-        android:text="Bio" />
+        android:text="Bio"
+        android:fontFamily="sans-serif-light"
+        />
 
     <TextView
         android:id="@+id/tvDetailsContact"
@@ -113,7 +123,8 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="20dp"
         android:text="Contact"
-        android:textColor="#000000" />
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <Button
         android:id="@+id/btnDetailsViewReviews"
@@ -154,7 +165,8 @@
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="0dp"
         android:text="Date"
-        android:textColor="#000000" />
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <Button
         android:id="@+id/btnDetailsDelete"

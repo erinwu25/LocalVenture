@@ -23,7 +23,8 @@
         android:layout_marginTop="20dp"
         android:layout_toEndOf="@+id/ivFromUserImg"
         android:text="Name"
-        android:textColor="#000000"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp" />
 
     <TextView
@@ -35,7 +36,8 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="10dp"
         android:text="Rating"
-        android:textColor="#000000" />
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
         android:id="@+id/tvFromUserContent"
@@ -48,7 +50,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:text="Review" />
+        android:text="Review"
+        android:fontFamily="sans-serif-light"
+        />
 
     <TextView
         android:id="@+id/tvFromUserDate"
@@ -59,5 +63,6 @@
         android:layout_marginTop="0dp"
         android:layout_marginEnd="20dp"
         android:text="Date"
-        android:textColor="#000000" />
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorPrimaryDark"/>
 </RelativeLayout>

@@ -74,7 +74,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHold
 
     // define a viewholder
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        TextView tvListingName, tvListingRating, tvListingDate;
+        TextView tvListingName, tvListingRating, tvListingDate, tvListingLocation;
         ImageView ivListingProfileImg;
         List<Review> ratingResults = new ArrayList<>();
         double rating;
@@ -86,6 +86,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHold
             tvListingRating = itemView.findViewById(R.id.tvListingRating);
             ivListingProfileImg = itemView.findViewById(R.id.ivListingProfileImg);
             tvListingDate = itemView.findViewById(R.id.tvListingDate);
+            tvListingLocation = itemView.findViewById(R.id.tvListingLocation);
 
             // itemView's onClickListener
             itemView.setOnClickListener(this);
@@ -110,6 +111,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHold
             tvListingName.setText((u.getString("Name")));
             queryRatings(listing.getUser());
             tvListingDate.setText(ListingDetails.getRelativeTimeAgo(((Listing)listing.fetchIfNeeded()).getKeyCreatedKey().toString()));
+            tvListingLocation.setText(u.getString("location"));
             // bind image
             ivListingProfileImg.setImageResource(R.drawable.ic_menu_compass);
             ParseFile imgFile = (u.getParseFile("profileImg"));

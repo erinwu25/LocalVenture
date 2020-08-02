@@ -8,8 +8,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.icu.util.DateInterval;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -44,10 +48,20 @@ public class MainActivity extends AppCompatActivity {
     // fragment
     Fragment fragment;
 
+    // menu
+    Menu menu;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        for(int i = 0; i < menu.size(); i++) {
+            MenuItem item = menu.getItem(i);
+            SpannableString spanString = new SpannableString(menu.getItem(i).getTitle().toString());
+            spanString.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorPrimaryDark)), 0, spanString.length(), 0); //fix the color to white
+            item.setTitle(spanString);
+        }
         return true;
     }
 
@@ -101,13 +115,17 @@ public class MainActivity extends AppCompatActivity {
                 switch(menuItem.getItemId()) {
                     case R.id.actionCreate:
                         // go to compose activity (main activity)
+                        showSearchOptions(false);
                         fragment = new CreateFragment();
                         break;
                     case R.id.actionProfile:
                         // go to profile
+                        showSearchOptions(false);
                         fragment = new ProfileFragment();
                         break;
                     case R.id.actionStream:
+                        showSearchOptions(true);
+
                     default:
                         // go to stream
                         fragment = new StreamFragment();
@@ -120,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
         });
         // Set default selection
         bottomNavigationView.setSelectedItemId(R.id.actionStream);
-
+;
     }
 
     // clear the search filters and display original list
@@ -144,11 +162,17 @@ public class MainActivity extends AppCompatActivity {
 
         // check if request code is the same
         if ((data != null) &&requestCode == REQUEST_CODE) {
-
+            StreamFragment newStreamFrag = new StreamFragment();
+            if (fragmentManager.findFragmentById(R.id.flContainer).getClass() != newStreamFrag.getClass()) {
+                Log.d("debug", "in");
+                fragmentManager.beginTransaction().replace(R.id.flContainer, newStreamFrag).commit();
+            }
+            Log.d("debug", fragmentManager.findFragmentById(R.id.flContainer).getClass().toString());
             // set visibility
             findViewById(R.id.rvStream).setVisibility(View.VISIBLE);
             findViewById(R.id.avNoResults).setVisibility(View.INVISIBLE);
             findViewById(R.id.tvNoResult).setVisibility(View.INVISIBLE);
+            Log.d("debug", "debug");
 
             // get fragment instance
             StreamFragment fragInst = (StreamFragment) fragmentManager.findFragmentById(R.id.flContainer);
@@ -254,5 +278,10 @@ public class MainActivity extends AppCompatActivity {
         rlng2 = lng2/(180/Math.PI);
         // distance in miles
         return 3963.0*Math.acos(Math.sin(rlat1)*Math.sin(rlat2) + Math.cos(rlat1)*Math.cos(rlat2)*Math.cos(rlng2-rlng1));
+    }
+
+    public void showSearchOptions(boolean showMenu) {
+        if (this.menu == null) { return;}
+        this.menu.setGroupVisible(R.id.searchGroup, showMenu);
     }
 }

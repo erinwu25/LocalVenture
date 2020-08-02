@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
     <item
         android:id="@+id/actionStream"
         android:icon="@android:drawable/ic_menu_mapmode"
@@ -12,6 +11,7 @@
         android:id="@+id/actionCreate"
         android:icon="@android:drawable/ic_input_add"
         android:title="Create"
+        android:iconTint="@color/colorAccent"
         app:showAsAction="always" />
     <item
         android:id="@+id/actionProfile"

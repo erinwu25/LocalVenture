@@ -14,7 +14,9 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="225dp"
-        android:text="Name" />
+        android:text="Name"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <EditText
         android:id="@+id/etComposeBlurb"
@@ -29,7 +31,11 @@
         android:layout_marginEnd="20dp"
         android:ems="10"
         android:hint="Blurb"
-        android:inputType="textPersonName" />
+        android:textColorHint="@color/colorPrimary"
+        android:inputType="textPersonName"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorPrimaryDark"
+        />
 
     <TextView
         android:id="@+id/tvComposeEmailTitle"
@@ -39,7 +45,9 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="76dp"
         android:layout_marginTop="30dp"
-        android:text="Email:" />
+        android:text="Email:"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
         android:id="@+id/tvComposeEmail"
@@ -49,7 +57,9 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/tvComposeEmailTitle"
-        android:text="TextView" />
+        android:text="TextView"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
         android:id="@+id/tvComposeBlurbTitle"
@@ -59,7 +69,9 @@
         android:layout_alignStart="@+id/etComposeBlurb"
         android:layout_marginStart="0dp"
         android:layout_marginTop="20dp"
-        android:text="A blurb about the adventures you offer" />
+        android:text="A blurb about the adventures you offer"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
         android:id="@+id/tvComposeAvailabilityTitle"
@@ -69,7 +81,9 @@
         android:layout_alignStart="@+id/tvComposeEmailTitle"
         android:layout_marginStart="0dp"
         android:layout_marginTop="30dp"
-        android:text="Availability" />
+        android:text="Availability"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
         android:id="@+id/tvStartDate"
@@ -80,7 +94,8 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="0dp"
         android:text="Start Date"
-        android:textColor="#000000" />
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <Button
         android:id="@+id/btnComposeSubmit"
@@ -109,7 +124,9 @@
         android:layout_alignStart="@+id/tvComposeName"
         android:layout_marginStart="0dp"
         android:layout_marginTop="15dp"
-        android:text="Location" />
+        android:text="Location"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <ImageButton
         android:id="@+id/btnComposeImgs"
@@ -130,7 +147,9 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
         android:text="Select up to 4 images"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <ImageView
         android:id="@+id/iv1"
@@ -202,8 +221,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="1dp"
         android:text="-"
-        android:textColor="#000000"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
         android:id="@+id/tvEndDate"
@@ -214,6 +234,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="15dp"
         android:text="End Date"
-        android:textColor="#000000" />
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorPrimaryDark"/>
 
 </RelativeLayout>

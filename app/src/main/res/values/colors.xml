@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#58E0BE</color>
+    <color name="colorPrimaryDark">#00A69B</color>
+    <color name="colorAccent">#C1EFE2</color>
+
+    // app colors
+    <color name="beige">#F1D6A9</color>
+
+
 </resources>

@@ -11,8 +11,6 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
-import gr.net.maroulis.library.EasySplashScreen;
-
 public class SplashScreen extends AppCompatActivity {
 
     @Override
@@ -35,7 +33,7 @@ public class SplashScreen extends AppCompatActivity {
                 startActivity(i);
                 finish();
             }
-        }, 3000);
+        }, 2500);
 
     }
 }

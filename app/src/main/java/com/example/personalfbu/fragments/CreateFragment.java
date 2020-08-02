@@ -81,6 +81,8 @@ public class CreateFragment extends Fragment implements DatePickerDialog.OnDateS
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        setHasOptionsMenu(false);
+
         // get current user to populate some fields
         final ParseUser currentUser = ParseUser.getCurrentUser();
 

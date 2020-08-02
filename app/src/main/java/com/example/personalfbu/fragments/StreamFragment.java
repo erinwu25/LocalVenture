@@ -2,7 +2,9 @@ package com.example.personalfbu.fragments;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,6 +20,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.personalfbu.EditProfileActivity;
@@ -25,6 +28,7 @@ import com.example.personalfbu.Listing;
 import com.example.personalfbu.ListingAdapter;
 import com.example.personalfbu.MainActivity;
 import com.example.personalfbu.R;
+import com.example.personalfbu.SearchActivity;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -57,7 +61,7 @@ public class StreamFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // find recycler view
+        // find elements
         rvStream = view.findViewById(R.id.rvStream);
 
         // initialize a list of listings and adapter
@@ -73,6 +77,8 @@ public class StreamFragment extends Fragment {
 
         // dividers between recycler view items
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvStream.getContext(), LinearLayoutManager.VERTICAL);
+        Drawable verticalDivider = ContextCompat.getDrawable(getActivity(), R.drawable.vertical_divider);
+        dividerItemDecoration.setDrawable(verticalDivider);
         rvStream.addItemDecoration(dividerItemDecoration);
 
         // query listings
