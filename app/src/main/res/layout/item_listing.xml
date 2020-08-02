@@ -9,6 +9,8 @@
     android:background="@color/colorAccent"
     android:backgroundTintMode="multiply"
     card_view:cardBackgroundColor="#FFFFFF"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     card_view:cardCornerRadius="7dp"
     card_view:cardElevation="1px"
     card_view:cardPreventCornerOverlap="true"

@@ -7,12 +7,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -101,6 +103,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHold
                 Listing listing = listings.get(position);
                 Intent toListingDetails = new Intent(context, ListingDetails.class);
                 toListingDetails.putExtra(Listing.class.getSimpleName(), Parcels.wrap(listing));
+
                 context.startActivity(toListingDetails);
             }
         }

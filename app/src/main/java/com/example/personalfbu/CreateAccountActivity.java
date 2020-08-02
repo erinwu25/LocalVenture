@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -40,18 +41,31 @@ public class CreateAccountActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Log.i(TAG, "OnClick Create Account button");
                 String username = etCreateUsername.getText().toString();
+                if (username.isEmpty()) {
+                    Toast.makeText(CreateAccountActivity.this, "Please enter a username", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 String password = etCreatePassword.getText().toString();
+                if (password.isEmpty()) {
+                    Toast.makeText(CreateAccountActivity.this, "Please enter a password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 String email = etCreateEmail.getText().toString();
+                if (email.isEmpty() || (isValidEmail(email) == false)) {
+                    Toast.makeText(CreateAccountActivity.this, "Please enter a valid email", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 createAccount(username, email, password);
-                Intent toEditProfile = new Intent(CreateAccountActivity.this, LoginActivity.class);
-                startActivity(toEditProfile);
+                Intent toLogin = new Intent(CreateAccountActivity.this, LoginActivity.class);
+                startActivity(toLogin);
             }
         });
 
     }
 
     private void createAccount(String username, String email, String password) {
-        final ParseUser user = new ParseUser();  // create new user
+        // create new user
+        final ParseUser user = new ParseUser();
 
         // set core properties
         user.setUsername(username);
@@ -67,5 +81,9 @@ public class CreateAccountActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public final static boolean isValidEmail(CharSequence target) {
+        return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
     }
 }
