@@ -106,6 +106,7 @@
         android:ems="10"
         android:gravity="start|top"
         android:hint="Your review"
+        android:backgroundTint="@color/colorPrimary"
         android:inputType="textMultiLine"
         android:fontFamily="sans-serif-light"
         android:textColor="@color/colorPrimaryDark"

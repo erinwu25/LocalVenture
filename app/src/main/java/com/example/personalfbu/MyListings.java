@@ -43,10 +43,6 @@ public class MyListings extends AppCompatActivity {
         rvStream.setAdapter(adapter);
         rvStream.setLayoutManager(new LinearLayoutManager(MyListings.this));
 
-        // dividers between recycler view items
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvStream.getContext(), LinearLayoutManager.VERTICAL);
-        rvStream.addItemDecoration(dividerItemDecoration);
-
         // get all listings that are by the currently logged in user
         queryMyListings();
 

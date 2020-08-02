@@ -107,9 +107,8 @@ public class ListingDetails extends AppCompatActivity implements ConfirmDeleteLi
         tvDetailsContact.setText("Contact: "+ listingCreator.getString("emailAddress"));
         tvDetailsDate.setText(getRelativeTimeAgo(listing.getKeyCreatedKey().toString()));
         tvDetailsAvailability.setText("Available "+ listing.getAvailability());
-
-
         queryRatings(listingCreator);
+        ivDetailsImg.setImageResource(R.drawable.ic_baseline_person_pin_24);
         ParseFile imgFile = listingCreator.getParseFile("profileImg");
         if (imgFile != null) {
             Glide.with(ListingDetails.this)

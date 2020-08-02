@@ -29,13 +29,13 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/colorPrimary"
         android:ems="10"
-        android:hint="Blurb"
-        android:textColorHint="@color/colorPrimary"
-        android:inputType="textPersonName"
         android:fontFamily="sans-serif-light"
+        android:hint="Blurb"
+        android:inputType="textPersonName"
         android:textColor="@color/colorPrimaryDark"
-        />
+        android:textColorHint="@color/colorPrimary" />
 
     <TextView
         android:id="@+id/tvComposeEmailTitle"

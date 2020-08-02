@@ -193,8 +193,8 @@ public class StreamFragment extends Fragment {
         // include data referred by user key
         query.include(Listing.KEY_USER);
 
-        // Limit query to last 20 listings
-        query.setLimit(20);
+        // Limit query to last 30 listings
+        query.setLimit(30);
 
         // order listings by creation date descending
         query.addDescendingOrder(Listing.KEY_CREATED_KEY);

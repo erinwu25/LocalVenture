@@ -66,9 +66,11 @@ dependencies {
     // library for easy swipe background on recyclerview
     implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.3'
 
-
     // https://github.com/airbnb/lottie-android
     // animations for visual polish
     implementation 'com.airbnb.android:lottie:3.4.1'
+
+    // cardview
+    implementation "androidx.cardview:cardview:1.0.0"
 
 }

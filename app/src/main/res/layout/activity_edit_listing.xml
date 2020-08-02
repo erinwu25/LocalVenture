@@ -56,6 +56,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="30dp"
         android:ems="10"
+        android:backgroundTint="@color/colorPrimary"
         android:gravity="start|top"
         android:hint="Enter a short description of the adventures you offer!"
         android:inputType="textMultiLine"
