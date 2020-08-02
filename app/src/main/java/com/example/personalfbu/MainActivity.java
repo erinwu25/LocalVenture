@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.personalfbu.fragments.CreateFragment;
@@ -29,7 +30,9 @@ import com.parse.ParseGeoPoint;
 import com.parse.ParseUser;
 
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Stream;
@@ -38,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     // request code
     private final int REQUEST_CODE = 99;
     String Tag = "MainActivity";
-
+    TextView tvFilters;
     // to manage fragments
     final FragmentManager fragmentManager = getSupportFragmentManager();
 
@@ -56,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         this.menu = menu;
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        // set text color of menu items
         for(int i = 0; i < menu.size(); i++) {
             MenuItem item = menu.getItem(i);
             SpannableString spanString = new SpannableString(menu.getItem(i).getTitle().toString());
@@ -107,8 +112,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // find element(s)
+        tvFilters = findViewById(R.id.tvFilters);
+
         // create tab navigation and determine what to display based on tab
         bottomNavigationView = findViewById(R.id.bottomNavigation);
+        bottomNavigationView.setBackgroundColor(Color.WHITE);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -150,6 +160,13 @@ public class MainActivity extends AppCompatActivity {
             fragInst.listingList.addAll(fragInst.masterList);
             fragInst.adapter.notifyDataSetChanged();
 
+
+            //clear text
+            ((TextView)findViewById(R.id.tvFilters)).setText("");
+
+            //set views
+            findViewById(R.id.tvFilters).setVisibility(View.INVISIBLE);
+            findViewById(R.id.avAirplane).setVisibility(View.VISIBLE);
             findViewById(R.id.rvStream).setVisibility(View.VISIBLE);
             findViewById(R.id.avNoResults).setVisibility(View.INVISIBLE);
             findViewById(R.id.tvNoResult).setVisibility(View.INVISIBLE);
@@ -167,12 +184,10 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("debug", "in");
                 fragmentManager.beginTransaction().replace(R.id.flContainer, newStreamFrag).commit();
             }
-            Log.d("debug", fragmentManager.findFragmentById(R.id.flContainer).getClass().toString());
             // set visibility
             findViewById(R.id.rvStream).setVisibility(View.VISIBLE);
             findViewById(R.id.avNoResults).setVisibility(View.INVISIBLE);
             findViewById(R.id.tvNoResult).setVisibility(View.INVISIBLE);
-            Log.d("debug", "debug");
 
             // get fragment instance
             StreamFragment fragInst = (StreamFragment) fragmentManager.findFragmentById(R.id.flContainer);
@@ -184,6 +199,12 @@ public class MainActivity extends AppCompatActivity {
                         filterLocation(fragInst.adapter, fragInst.listingList, fragInst.masterList,
                                 Double.parseDouble(data.getStringExtra("lat")), Double.parseDouble(data.getStringExtra("lng")),
                                 Integer.valueOf(data.getStringExtra("dist")));
+
+                        // set "showing results for"
+                        findViewById(R.id.avAirplane).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.tvFilters).setVisibility(View.VISIBLE);
+                        String locationString = getResources().getString(R.string.showresults) + " " + data.getStringExtra("location");
+                        ((TextView)findViewById(R.id.tvFilters)).setText(locationString);
                     }
                     catch (Exception e) {
                         Toast.makeText(MainActivity.this, "Error filtering by location. Please try again", Toast.LENGTH_SHORT).show();
@@ -199,6 +220,10 @@ public class MainActivity extends AppCompatActivity {
                     endDate.setTime(data.getLongExtra("endDate", -1));
                     try {
                         filterDate(fragInst.adapter, fragInst.listingList, startDate, endDate);
+
+                        // set filter title
+                        String addDates = ((TextView)findViewById(R.id.tvFilters)).getText() + " from " + readableDate(startDate) + " - " + readableDate(endDate);
+                        ((TextView)findViewById(R.id.tvFilters)).setText(addDates);
                     }
                     catch (Exception e) {
                         Toast.makeText(MainActivity.this, "Error filtering by date. Please try again", Toast.LENGTH_SHORT).show();
@@ -220,6 +245,12 @@ public class MainActivity extends AppCompatActivity {
             if (overlapDates(startDate, endDate, listingStart, listingEnd)) {
                 inDate.add(item);
             }
+        }
+        if (inDate.size() == 0) {
+            // if no results, show animation
+            findViewById(R.id.rvStream).setVisibility(View.INVISIBLE);
+            findViewById(R.id.avNoResults).setVisibility(View.VISIBLE);
+            findViewById(R.id.tvNoResult).setVisibility(View.VISIBLE);
         }
         listingList.clear();
         adapter.notifyDataSetChanged();
@@ -283,5 +314,12 @@ public class MainActivity extends AppCompatActivity {
     public void showSearchOptions(boolean showMenu) {
         if (this.menu == null) { return;}
         this.menu.setGroupVisible(R.id.searchGroup, showMenu);
+    }
+
+    // returns date in string form
+    public String readableDate(Date date) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        return DateFormat.getDateInstance().format(c.getTime());
     }
 }

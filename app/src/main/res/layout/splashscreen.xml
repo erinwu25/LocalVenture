@@ -4,17 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:background="#FFFFFF">
+    android:background="@color/colorAccent">
 
-    <ImageView
-        android:id="@+id/ivFlyingGif"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_below="@+id/tvSplashTitle"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="-30dp"
-        app:srcCompat="@drawable/flying" />
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/avNoListings"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_below="@id/tvSplashTitle"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="0dp"
+        android:foregroundGravity="center"
+        android:scaleType="centerCrop"
+        android:visibility="visible"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/splash" />
 
     <TextView
         android:id="@+id/tvSplashTitle"
@@ -22,10 +26,23 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="175dp"
         android:fontFamily="sans-serif-thin"
-        android:text="Travel App"
+        android:text="@string/appName"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textColor="#00A69B"
         android:textSize="30sp" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/avPlanes"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:foregroundGravity="center"
+        android:visibility="invisible"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:scaleType="fitXY"
+        app:lottie_rawRes="@raw/airplane" />
 </RelativeLayout>

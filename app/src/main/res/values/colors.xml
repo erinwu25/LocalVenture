@@ -3,6 +3,9 @@
     <color name="colorPrimary">#58E0BE</color>
     <color name="colorPrimaryDark">#00A69B</color>
     <color name="colorAccent">#C1EFE2</color>
+    <color name="colorWhite">#00A69B</color>
+
+    //4A5352
 
     // app colors
     <color name="beige">#F1D6A9</color>

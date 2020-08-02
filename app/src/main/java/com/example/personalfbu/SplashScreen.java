@@ -20,11 +20,6 @@ public class SplashScreen extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
-        ImageView ivFlyingGif = findViewById(R.id.ivFlyingGif);
-
-        Glide.with(this)
-                .load(R.drawable.flying)
-                .into(ivFlyingGif);
 
         new Handler(Looper.myLooper()).postDelayed(new Runnable() {
             @Override
@@ -33,7 +28,7 @@ public class SplashScreen extends AppCompatActivity {
                 startActivity(i);
                 finish();
             }
-        }, 2500);
+        }, 2250);
 
     }
 }

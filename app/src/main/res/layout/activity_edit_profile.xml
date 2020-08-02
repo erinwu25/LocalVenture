@@ -72,6 +72,10 @@
         android:layout_below="@+id/etEditEmail"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
+        android:background="@drawable/buttondesign"
+        android:fontFamily="sans-serif-light"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
         android:text="Save" />
 
     <Button
@@ -82,6 +86,10 @@
         android:layout_alignStart="@+id/ivEditImg"
         android:layout_marginStart="0dp"
         android:layout_marginTop="5dp"
+        android:background="@drawable/buttondesign"
+        android:fontFamily="sans-serif-light"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
         android:text="Take Photo" />
 
     <Button
@@ -92,7 +100,11 @@
         android:layout_alignStart="@+id/btnTakeProfImg"
         android:layout_marginStart="2dp"
         android:layout_marginTop="5dp"
-        android:text="Choose From Gallery" />
+        android:background="@drawable/buttondesign"
+        android:fontFamily="sans-serif-light"
+        android:text="  Choose From Gallery  "
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite" />
 
     <fragment
         android:id="@+id/autocomplete_fragment_edit"

@@ -110,7 +110,11 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="50dp"
-        android:text="See Reviews" />
+        android:background="@drawable/buttondesign"
+        android:fontFamily="sans-serif-light"
+        android:text="See Reviews"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite" />
 
     <ImageButton
         android:id="@+id/btnEditProfile"
@@ -160,8 +164,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
-        android:foregroundTint="#F1D6A9"
-        android:src="@android:drawable/ic_menu_compass" />
+        android:src="@drawable/ic_baseline_person_pin_24"
+        app:srcCompat="@drawable/ic_baseline_person_pin_24" />
 
     <TextView
         android:id="@+id/tvMyListingsTitle"
@@ -185,6 +189,10 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
-        android:text="See My Listings" />
+        android:background="@drawable/buttondesign"
+        android:fontFamily="sans-serif-light"
+        android:text="See My Listings"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite" />
 
 </RelativeLayout>

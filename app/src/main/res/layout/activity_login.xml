@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
+
     <EditText
         android:id="@+id/etCreateUsername"
         android:layout_width="match_parent"
@@ -13,16 +14,16 @@
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="50dp"
         android:ems="10"
+        android:fontFamily="sans-serif-light"
         android:hint="   Username"
         android:inputType="textPersonName"
-        android:textSize="14sp"
-        android:visibility="visible"
-        android:fontFamily="sans-serif-light"
         android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimary"/>
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="14sp"
+        android:visibility="visible" />
 
     <EditText
         android:id="@+id/etCreatePassword"
@@ -49,13 +50,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/etCreatePassword"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="160dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
+        android:background="@drawable/buttondesign"
+        android:fontFamily="sans-serif-light"
         android:text="Log In"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="#E91E63" />
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite" />
 
     <Button
         android:id="@+id/btnCreateAccount"
@@ -63,7 +64,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnLogin"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="147dp"
+        android:layout_marginStart="150dp"
         android:layout_marginTop="154dp"
-        android:text="Create Account" />
+        android:background="@drawable/buttondesign"
+        android:fontFamily="sans-serif-light"
+        android:text="  Create Account  "
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite" />
 </RelativeLayout>

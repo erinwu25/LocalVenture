@@ -46,7 +46,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="161dp"
-        android:text="Sign Up" />
+        android:text="Sign Up"
+        android:background="@drawable/buttondesign"
+        android:fontFamily="sans-serif-light"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite" />
 
     <EditText
         android:id="@+id/etCreateEmail"
@@ -56,10 +60,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:ems="10"
+        android:fontFamily="sans-serif-light"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:fontFamily="sans-serif-light"
+        android:textAllCaps="false"
         android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimary"/>
+        android:textColorHint="@color/colorPrimary" />
 
 </RelativeLayout>

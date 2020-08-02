@@ -114,6 +114,9 @@ public class CreateFragment extends Fragment implements DatePickerDialog.OnDateS
                     .transform(new RoundedCornersTransformation(15, 3))
                     .into(ivComposeProfileImg);
         }
+        else {
+            ivComposeProfileImg.setImageResource(R.drawable.ic_baseline_person_pin_24);
+        }
 
         // click listener for choosing dates
         btnStartDate.setOnClickListener(new View.OnClickListener() {

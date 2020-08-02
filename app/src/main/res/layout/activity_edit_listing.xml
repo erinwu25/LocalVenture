@@ -83,6 +83,10 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="149dp"
         android:layout_marginEnd="60dp"
+        android:background="@drawable/buttondesign"
+        android:fontFamily="sans-serif-light"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
         android:text="Save" />
 
     <Button
@@ -91,9 +95,13 @@
         android:layout_height="35dp"
         android:layout_below="@+id/tvEditListingAvailabilityTitle"
         android:layout_alignStart="@+id/tvEditListingAvailabilityTitle"
-        android:layout_marginStart="0dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="15dp"
-        android:text="Select Start Date" />
+        android:background="@drawable/buttondesign"
+        android:fontFamily="sans-serif-light"
+        android:text=" Select Start Date "
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite" />
 
     <Button
         android:id="@+id/btnEditEnd"
@@ -102,8 +110,12 @@
         android:layout_below="@+id/tvEditListingAvailabilityTitle"
         android:layout_alignEnd="@+id/etEditListingBlurb"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="0dp"
-        android:text="Select End Date" />
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/buttondesign"
+        android:fontFamily="sans-serif-light"
+        android:text=" Select End Date "
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite" />
 
     <TextView
         android:id="@+id/tvEditStart"

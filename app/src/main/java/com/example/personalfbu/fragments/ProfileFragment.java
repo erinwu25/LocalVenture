@@ -88,6 +88,9 @@ public class ProfileFragment extends Fragment {
                     .load(image.getUrl())
                     .into(ivProfileImg);
         }
+        else {
+            ivProfileImg.setImageResource(R.drawable.ic_baseline_person_pin_24);
+        }
         queryRatings(currentUser);  // query and set average rating
         tvProfileLocation.setText("Location: " +currentUser.getString("location"));
         tvProfileBio.setText(currentUser.getString("Bio"));

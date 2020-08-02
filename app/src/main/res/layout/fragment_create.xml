@@ -104,6 +104,10 @@
         android:layout_below="@+id/iv2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
+        android:background="@drawable/buttondesign"
+        android:fontFamily="sans-serif-light"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
         android:text="Submit!" />
 
     <ImageView
@@ -136,6 +140,8 @@
         android:layout_marginStart="35dp"
         android:layout_marginTop="15dp"
         android:layout_toEndOf="@+id/tvChooseImgTitle"
+        android:background="@drawable/buttondesign"
+        android:textColor="@color/colorWhite"
         android:src="@android:drawable/ic_menu_add" />
 
     <TextView
@@ -196,10 +202,14 @@
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_below="@+id/tvComposeAvailabilityTitle"
-        android:layout_alignStart="@+id/tvComposeAvailabilityTitle"
-        android:layout_marginStart="-40dp"
+        android:layout_alignStart="@+id/etComposeBlurb"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:text="Choose Start Date"
+        android:background="@drawable/buttondesign"
+        android:fontFamily="sans-serif-light"
+        android:text="  Choose Start Date  "
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
         android:textSize="12sp" />
 
     <Button
@@ -207,10 +217,14 @@
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_below="@+id/tvComposeAvailabilityTitle"
-        android:layout_alignParentEnd="true"
+        android:layout_alignEnd="@+id/etComposeBlurb"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="39dp"
-        android:text="Choose End Date"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/buttondesign"
+        android:fontFamily="sans-serif-light"
+        android:text="  Choose End Date  "
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
         android:textSize="12sp" />
 
     <TextView

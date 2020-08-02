@@ -69,6 +69,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
             tvFromUserRating.setText(String.valueOf(review.getRating()) + "/5");
             tvFromUserContent.setText(review.getReviewContent());
             tvFromUserDate.setText(ListingDetails.getRelativeTimeAgo(review.getWhenCreated().toString()));
+            ivFromUserImg.setImageResource(R.drawable.ic_baseline_person_pin_24);
             ParseFile imgFile = review.getFromUser().getParseFile("profileImg");
             if (imgFile != null) {
                 Glide.with(context)

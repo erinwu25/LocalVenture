@@ -18,8 +18,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnFilterStart"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:text="Search" />
+        android:layout_marginTop="30dp"
+        android:background="@drawable/buttondesign"
+        android:fontFamily="sans-serif-light"
+        android:text="Search"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite" />
 
     <RadioGroup
         android:id="@+id/rgDist"
@@ -144,7 +148,11 @@
         android:layout_alignEnd="@+id/tvFilterStart"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="0dp"
-        android:text="Select Start Date" />
+        android:background="@drawable/buttondesign"
+        android:fontFamily="sans-serif-light"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:text="  Select Start Date  " />
 
     <Button
         android:id="@+id/btnFilterEnd"
@@ -154,6 +162,10 @@
         android:layout_alignStart="@+id/tvFilterEnd"
         android:layout_marginStart="0dp"
         android:layout_marginTop="10dp"
-        android:text="Select End Date" />
+        android:background="@drawable/buttondesign"
+        android:fontFamily="sans-serif-light"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:text="  Select End Date  " />
 
 </RelativeLayout>

@@ -105,4 +105,27 @@
         android:textSize="18sp"
         android:visibility="invisible" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/avAirplane"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:scaleType="fitXY"
+        android:layout_marginTop="0dp"
+        android:visibility="visible"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/airplane" />
+
+    <TextView
+        android:id="@+id/tvFilters"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="@string/showresults"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14sp"
+        android:visibility="invisible"/>
+
+
 </RelativeLayout>

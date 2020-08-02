@@ -113,7 +113,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHold
             tvListingDate.setText(ListingDetails.getRelativeTimeAgo(((Listing)listing.fetchIfNeeded()).getKeyCreatedKey().toString()));
             tvListingLocation.setText(u.getString("location"));
             // bind image
-            ivListingProfileImg.setImageResource(R.drawable.ic_menu_compass);
+            ivListingProfileImg.setImageResource(R.drawable.ic_baseline_person_pin_24);
             ParseFile imgFile = (u.getParseFile("profileImg"));
             if (imgFile != null) {
                 Glide.with(context)

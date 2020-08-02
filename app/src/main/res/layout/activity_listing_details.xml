@@ -134,7 +134,11 @@
         android:layout_alignStart="@+id/tvDetailsContact"
         android:layout_marginStart="0dp"
         android:layout_marginTop="15dp"
-        android:text="View Reviews" />
+        android:background="@drawable/buttondesign"
+        android:fontFamily="sans-serif-light"
+        android:text="  View Reviews  "
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite" />
 
     <Button
         android:id="@+id/btnDetailsEdit"
@@ -144,6 +148,10 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="40dp"
         android:layout_marginBottom="40dp"
+        android:background="@drawable/buttondesign"
+        android:fontFamily="sans-serif-light"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
         android:text="Edit Listing" />
 
     <Button
@@ -154,6 +162,10 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="40dp"
+        android:background="@drawable/buttondesign"
+        android:fontFamily="sans-serif-light"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
         android:text="Add Review" />
 
     <TextView
@@ -176,7 +188,11 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="0dp"
-        android:text="Delete Listing" />
+        android:background="@drawable/buttondesign"
+        android:fontFamily="sans-serif-light"
+        android:text="  Delete Listing  "
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite" />
     
     <FrameLayout
         android:id="@+id/container"

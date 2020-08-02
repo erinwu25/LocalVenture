@@ -34,10 +34,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:fontFamily="sans-serif-light"
-        android:text="No Ratings Yet"
+        android:text="No Reviews Yet"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textColor="#00A69B"
-        android:visibility="invisible"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:visibility="invisible" />
 </RelativeLayout>
