@@ -25,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
         // see if there is a current logged in user
         if (ParseUser.getCurrentUser() != null) {
             goMainActivity();

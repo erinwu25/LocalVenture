@@ -16,13 +16,17 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/CreateAccountActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/CreateAccountActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/ListingAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/ListingAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_listing_details.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_listing_details.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_listing.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_listing.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/personalfbu/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,34 +188,34 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="575" y="304" key="AndroidCreateXmlResourceDialog/0.0.1440.900@0.0.1440.900" timestamp="1596345503535" />
-    <state width="1398" height="281" key="GridCell.Tab.0.bottom" timestamp="1596345074951">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="281" key="GridCell.Tab.0.bottom" timestamp="1596407687465">
+      <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="281" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1596345074951" />
+    <state width="1398" height="281" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1596407424137" />
     <state width="1398" height="108" key="GridCell.Tab.0.bottom/0.23.1440.822@0.23.1440.822" timestamp="1596058247534" />
     <state width="1398" height="281" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1596339722858" />
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.23.1440.825@0.23.1440.825" timestamp="1594679533007" />
-    <state width="1398" height="281" key="GridCell.Tab.0.center" timestamp="1596345074945">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="281" key="GridCell.Tab.0.bottom/0.23.1440.825@0.23.1440.825" timestamp="1596407687465" />
+    <state width="1398" height="281" key="GridCell.Tab.0.center" timestamp="1596407687464">
+      <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="281" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1596345074945" />
+    <state width="1398" height="281" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1596407424136" />
     <state width="1398" height="108" key="GridCell.Tab.0.center/0.23.1440.822@0.23.1440.822" timestamp="1596058247533" />
     <state width="1398" height="281" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1596339722857" />
-    <state width="1398" height="245" key="GridCell.Tab.0.center/0.23.1440.825@0.23.1440.825" timestamp="1594679533006" />
-    <state width="1398" height="281" key="GridCell.Tab.0.left" timestamp="1596345074944">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="281" key="GridCell.Tab.0.center/0.23.1440.825@0.23.1440.825" timestamp="1596407687464" />
+    <state width="1398" height="281" key="GridCell.Tab.0.left" timestamp="1596407687464">
+      <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="281" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1596345074944" />
+    <state width="1398" height="281" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1596407424135" />
     <state width="1398" height="108" key="GridCell.Tab.0.left/0.23.1440.822@0.23.1440.822" timestamp="1596058247533" />
     <state width="1398" height="281" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1596339722857" />
-    <state width="1398" height="245" key="GridCell.Tab.0.left/0.23.1440.825@0.23.1440.825" timestamp="1594679533005" />
-    <state width="1398" height="281" key="GridCell.Tab.0.right" timestamp="1596345074946">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="281" key="GridCell.Tab.0.left/0.23.1440.825@0.23.1440.825" timestamp="1596407687464" />
+    <state width="1398" height="281" key="GridCell.Tab.0.right" timestamp="1596407687465">
+      <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="281" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1596345074946" />
+    <state width="1398" height="281" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1596407424136" />
     <state width="1398" height="108" key="GridCell.Tab.0.right/0.23.1440.822@0.23.1440.822" timestamp="1596058247534" />
     <state width="1398" height="281" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1596339722858" />
-    <state width="1398" height="245" key="GridCell.Tab.0.right/0.23.1440.825@0.23.1440.825" timestamp="1594679533006" />
+    <state width="1398" height="281" key="GridCell.Tab.0.right/0.23.1440.825@0.23.1440.825" timestamp="1596407687465" />
     <state x="221" y="89" key="SettingsEditor" timestamp="1596322889947">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

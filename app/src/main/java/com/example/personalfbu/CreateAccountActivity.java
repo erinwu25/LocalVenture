@@ -83,6 +83,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         });
     }
 
+    // from https://stackoverflow.com/questions/1819142/how-should-i-validate-an-e-mail-address
     public final static boolean isValidEmail(CharSequence target) {
         return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
     }

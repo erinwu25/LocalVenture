@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"><![CDATA[
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+    ]]>
+
     <EditText
         android:id="@+id/etCreateUsername"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_below="@+id/tvLoginMap"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="48dp"
+        android:backgroundTint="@color/colorPrimary"
         android:ems="10"
         android:fontFamily="sans-serif-light"
         android:hint="   Username"
-        android:backgroundTint="@color/colorPrimary"
         android:inputType="textPersonName"
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="@color/colorPrimary"
@@ -36,14 +42,14 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
-        android:ems="10"
         android:backgroundTint="@color/colorPrimary"
+        android:ems="10"
+        android:fontFamily="sans-serif-light"
         android:hint="   Password"
         android:inputType="textPassword"
-        android:textSize="14sp"
-        android:fontFamily="sans-serif-light"
         android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimary"/>
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="14sp" />
 
     <Button
         android:id="@+id/btnLogin"
@@ -51,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/etCreatePassword"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/buttondesign"
         android:fontFamily="sans-serif-light"
         android:foregroundGravity="center"
@@ -64,9 +70,9 @@
         android:id="@+id/btnCreateAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnLogin"
+        android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/buttondesign"
         android:fontFamily="sans-serif-light"
         android:text="  Create Account  "
@@ -77,11 +83,38 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/btnLogin"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="306dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="sans-serif-light"
         android:text="- or -"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/avMappin"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:foregroundGravity="center"
+        android:scaleType="centerCrop"
+        android:visibility="visible"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/mappin" />
+
+    <TextView
+        android:id="@+id/tvLoginMap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/avMappin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-thin"
+        android:text="@string/appName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        android:textColor="#00A69B"
+        android:textSize="30sp" />
 </RelativeLayout>
