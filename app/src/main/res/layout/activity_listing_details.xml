@@ -8,6 +8,25 @@
     tools:context=".ListingDetails">
 
     <ImageView
+        android:id="@+id/ivExpanded"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        />
+
+    <ImageView
+        android:id="@+id/btnToChat"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/tvDetailsContact"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="-30dp"
+        android:layout_toEndOf="@+id/textView5"
+        android:clickable="true"
+        android:tint="@color/colorPrimaryDark"
+        app:srcCompat="@android:drawable/sym_action_chat" />
+
+    <ImageView
         android:id="@+id/ivDetailsImg"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -84,11 +103,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvDetailsAvailability"
         android:layout_alignStart="@+id/tvDetailsAvailability"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="15dp"
-        android:text="Location"
+        android:layout_marginEnd="10dp"
         android:fontFamily="sans-serif-light"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:text="Location"
+        android:textColor="@color/colorPrimaryDark" />
 
     <TextView
         android:id="@+id/tvDetailsBioTitle"
@@ -133,7 +154,7 @@
         android:layout_below="@+id/tvDetailsContact"
         android:layout_alignStart="@+id/tvDetailsContact"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/buttondesign"
         android:fontFamily="sans-serif-light"
         android:text="  View Reviews  "
@@ -193,11 +214,15 @@
         android:text="  Delete Listing  "
         android:textAllCaps="false"
         android:textColor="@color/colorWhite" />
-    
+
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="0dp">
 
         <ImageView
             android:id="@+id/pic1"
@@ -243,11 +268,17 @@
             android:visibility="invisible"
             app:srcCompat="@drawable/ic_menu_gallery" />
 
-    <ImageView
-        android:id="@+id/ivExpanded"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible"
-        />
     </FrameLayout>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvDetailsContact"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/tvDetailsContact"
+        android:fontFamily="sans-serif-light"
+        android:text="Chat"
+        android:textColor="@color/colorPrimaryDark" />
 </RelativeLayout>

@@ -45,7 +45,7 @@ public class ListingDetails extends AppCompatActivity implements ConfirmDeleteLi
     TextView tvDetailsName, tvDetailsRating, tvDetailsBlurb, tvDetailsBio, tvDetailsAvailability, tvDetailsLocation, tvDetailsContact, tvDetailsDate;
     Button btnDetailsViewReviews, btnDetailsEdit, btnAddReview, btnDetailsDelete;
     Listing listing;
-    ImageView ivDetailsImg, pic1, pic2, pic3, pic4, ivExpanded;
+    ImageView ivDetailsImg, pic1, pic2, pic3, pic4, ivExpanded, btnToChat;
     List<Review> ratingResults = new ArrayList<>();
     double rating;
     Object imgArray;
@@ -71,6 +71,7 @@ public class ListingDetails extends AppCompatActivity implements ConfirmDeleteLi
         btnDetailsEdit = findViewById(R.id.btnDetailsEdit);
         btnDetailsViewReviews = findViewById(R.id.btnDetailsViewReviews);
         btnAddReview = findViewById(R.id.btnAddReview);
+        btnToChat = findViewById(R.id.btnToChat);
         btnDetailsDelete = findViewById(R.id.btnDetailsDelete);
         ivDetailsImg = findViewById(R.id.ivDetailsImg);
         pic1 = findViewById(R.id.pic1);
@@ -94,9 +95,10 @@ public class ListingDetails extends AppCompatActivity implements ConfirmDeleteLi
             btnDetailsDelete.setVisibility(View.GONE);
         }
 
-        // determine whether to show add review button
+        // determine whether to show add review button and chat
         if (currentUser.getObjectId().equals(listingCreator.getObjectId())){
             btnAddReview.setVisibility(View.GONE);
+            btnToChat.setVisibility(View.GONE);
         }
 
         // fill in details
@@ -201,8 +203,20 @@ public class ListingDetails extends AppCompatActivity implements ConfirmDeleteLi
                 Bundle userBundle = new Bundle();
                 userBundle.putParcelable("toUser", listingCreator);
                 toAddReview.putExtras(userBundle);
-                //start activity for result
+                //start activity
                 startActivity(toAddReview);
+            }
+        });
+
+        btnToChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toChat = new Intent(ListingDetails.this, ChatActivity.class);
+                Bundle userBundle = new Bundle();
+                userBundle.putParcelable("receiver", listingCreator);
+                toChat.putExtras(userBundle);
+                // start activity
+                startActivity(toChat);
             }
         });
 
