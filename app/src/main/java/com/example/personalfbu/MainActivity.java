@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.personalfbu.fragments.ChatFragment;
 import com.example.personalfbu.fragments.CreateFragment;
 import com.example.personalfbu.fragments.ProfileFragment;
 import com.example.personalfbu.fragments.StreamFragment;
@@ -127,6 +128,10 @@ public class MainActivity extends AppCompatActivity {
                         // go to compose activity (main activity)
                         showSearchOptions(false);
                         fragment = new CreateFragment();
+                        break;
+                    case R.id.actionChat:
+                        showSearchOptions(false);
+                        fragment = new ChatFragment();
                         break;
                     case R.id.actionProfile:
                         // go to profile

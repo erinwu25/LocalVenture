@@ -14,6 +14,11 @@
         android:iconTint="@color/colorAccent"
         app:showAsAction="always" />
     <item
+        android:id="@+id/actionChat"
+        android:icon="@android:drawable/sym_action_chat"
+        android:title="Chat"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/actionProfile"
         android:icon="@android:drawable/ic_menu_myplaces"
         android:title="Profile"

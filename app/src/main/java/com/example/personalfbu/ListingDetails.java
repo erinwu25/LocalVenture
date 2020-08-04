@@ -99,6 +99,7 @@ public class ListingDetails extends AppCompatActivity implements ConfirmDeleteLi
         if (currentUser.getObjectId().equals(listingCreator.getObjectId())){
             btnAddReview.setVisibility(View.GONE);
             btnToChat.setVisibility(View.GONE);
+            findViewById(R.id.chatTitle).setVisibility(View.GONE);
         }
 
         // fill in details

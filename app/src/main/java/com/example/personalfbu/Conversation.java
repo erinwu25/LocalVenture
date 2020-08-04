@@ -11,6 +11,7 @@ public class Conversation extends ParseObject {
     public static final String KEY_personOne = "personOne";
     public static final String KEY_personTwo = "personTwo";
     public static final String KEY_messages = "messages";
+    public static final String KEY_updatedAt = "updatedAt";
 
     // getters and setters
     public ParseUser getPersonOne() { return getParseUser(KEY_personOne); }

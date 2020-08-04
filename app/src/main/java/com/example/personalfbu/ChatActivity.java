@@ -43,8 +43,6 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        final String currentUserId = currentUser.getObjectId();
-
         // get elements
         etEnterMessage = findViewById(R.id.etEnterMessage);
         btnSend = findViewById(R.id.btnSend);
@@ -79,7 +77,7 @@ public class ChatActivity extends AppCompatActivity {
 
         // associate the LayoutManager with the RecyclerView
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ChatActivity.this);
-        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setReverseLayout(false);
         rvChat.setLayoutManager(linearLayoutManager);
 
         // when send button clicked, send message
@@ -212,7 +210,7 @@ public class ChatActivity extends AppCompatActivity {
                     try {
                         Object convoMessages = ((Conversation)object.fetchIfNeeded()).getMessages();
                         ArrayList<Message> convoMessagesList = (ArrayList<Message>)convoMessages;
-                        Collections.reverse(convoMessagesList);
+//                        Collections.reverse(convoMessagesList);
                         mMessages.clear();
                         mMessages.addAll(convoMessagesList);
                         chatAdapter.notifyDataSetChanged();
