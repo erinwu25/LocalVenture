@@ -116,6 +116,7 @@ public class EditProfileActivity extends AppCompatActivity {
         if(bio != null) {
             etEditBio.setText(bio);
         }
+        ivEditImg.setImageResource(R.drawable.ic_baseline_person_pin_24);
         ParseFile prevImg = currentUser.getParseFile("profileImg");
         if (prevImg != null) {
             prevImgUrl = prevImg.getUrl();
@@ -312,7 +313,7 @@ public class EditProfileActivity extends AppCompatActivity {
             ivEditImg.setImageBitmap(selectedImage);
             chosePhoto = true;
         }
-        else {
+        else if (data == null){
             // if data is null
             Toast.makeText(EditProfileActivity.this, "Profile photo not set", Toast.LENGTH_SHORT).show();
         }

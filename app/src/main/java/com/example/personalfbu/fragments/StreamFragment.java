@@ -205,6 +205,7 @@ public class StreamFragment extends Fragment {
             public void done(List<Listing> listings, ParseException e) {
                if (e != null) {
                    // log issue getting listings
+                   Log.e("StreamFragment", "", e);
                    Toast.makeText(getContext(), "Error getting listings", Toast.LENGTH_SHORT).show();
                    return;
                }

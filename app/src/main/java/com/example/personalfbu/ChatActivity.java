@@ -55,7 +55,7 @@ public class ChatActivity extends AppCompatActivity {
         receivingUser = getIntent().getExtras().getParcelable("receiver");
 
         // set title
-        tvMessageTitle.setText("Chatting with " + receivingUser.getUsername());
+        tvMessageTitle.setText("Chatting with " + receivingUser.getString("Name"));
 
         // set up adapter
         chatAdapter = new ChatAdapter(mMessages,ChatActivity.this);

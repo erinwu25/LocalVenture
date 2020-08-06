@@ -25,6 +25,7 @@ import com.example.personalfbu.fragments.ChatFragment;
 import com.example.personalfbu.fragments.CreateFragment;
 import com.example.personalfbu.fragments.ProfileFragment;
 import com.example.personalfbu.fragments.StreamFragment;
+import com.facebook.login.LoginManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
@@ -102,10 +103,15 @@ public class MainActivity extends AppCompatActivity {
             Intent toLogin = new Intent(this, LoginActivity.class);
             startActivity(toLogin);
             finish();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Toast.makeText(MainActivity.this, "Error logging out. Please try again", Toast.LENGTH_SHORT).show();
         }
+        try {
+            LoginManager.getInstance().logOut();
+        }
+        catch (Exception ex){ Log.e(Tag, "nope", ex); }
+
+
     }
 
     @Override

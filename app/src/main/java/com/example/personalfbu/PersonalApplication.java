@@ -25,7 +25,6 @@ public class PersonalApplication extends Application {
                 .clientKey("erinFBU")  // set explicitly unless clientKey is explicitly configured on Parse server
                 .server("https://erin-fbu-personal.herokuapp.com/parse/").build());
 
-
     }
 
 }

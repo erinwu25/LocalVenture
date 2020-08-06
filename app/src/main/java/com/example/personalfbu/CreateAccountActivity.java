@@ -63,7 +63,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     }
 
-    private void createAccount(String username, String email, String password) {
+    public void createAccount(String username, String email, String password) {
         // create new user
         final ParseUser user = new ParseUser();
 

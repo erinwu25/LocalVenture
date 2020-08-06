@@ -63,10 +63,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
             final ImageView profileView = isMe ? holder.imageMe : holder.imageOther;
             ParseFile image = ((ParseUser)message.getUserSending().fetchIfNeeded()).getParseFile("profileImg");
-            Glide.with(mContext)
-                    .load(image.getUrl())
-                    .circleCrop()
-                    .into(profileView);
+            profileView.setImageResource(R.drawable.ic_baseline_person_pin_24);
+            if(image != null) {
+                Glide.with(mContext)
+                        .load(image.getUrl())
+                        .circleCrop()
+                        .into(profileView);
+            }
             if (isMe) { holder.body1.setText(message.getMessageBody());}
             else { holder.body2.setText(message.getMessageBody()); }
 
