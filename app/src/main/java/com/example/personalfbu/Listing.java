@@ -19,6 +19,8 @@ public class Listing extends ParseObject {
     public static final String KEY_CREATED_KEY = "createdAt";
     public static final String KEY_startDate = "startDate";
     public static final String KEY_endDate = "endDate";
+    public static final String KEY_title = "title";
+    public static final String KEY_price = "price";
 
     // getters and setters
     public String getBlurb() {
@@ -65,6 +67,18 @@ public class Listing extends ParseObject {
 
     public void setEndDate(Date endDate) { put(KEY_endDate, endDate); }
 
+    public Double getPrice() {
+        Number p = getNumber(KEY_price);
+        if (p != null) {
+            return p.doubleValue();
+        }
+        return null;
+    }
 
+    public void setPrice(Number price) {put(KEY_price, price);}
+
+    public String getTitle() { return getString(KEY_title); }
+
+    public void setTitle(String title) { put(KEY_title, title); }
 
 }

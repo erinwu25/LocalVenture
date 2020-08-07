@@ -76,7 +76,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHold
 
     // define a viewholder
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        TextView tvListingName, tvListingRating, tvListingDate, tvListingLocation;
+        TextView tvListingName, tvListingRating, tvListingDate, tvListingLocation, tvListingTitle;
         ImageView ivListingProfileImg;
         List<Review> ratingResults = new ArrayList<>();
         double rating;
@@ -89,6 +89,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHold
             ivListingProfileImg = itemView.findViewById(R.id.ivListingProfileImg);
             tvListingDate = itemView.findViewById(R.id.tvListingDate);
             tvListingLocation = itemView.findViewById(R.id.tvListingLocation);
+            tvListingTitle = itemView.findViewById(R.id.tvListingTitle);
 
             // itemView's onClickListener
             itemView.setOnClickListener(this);
@@ -114,6 +115,9 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHold
             tvListingName.setText((u.getString("Name")));
             queryRatings(listing.getUser());
             tvListingDate.setText(ListingDetails.getRelativeTimeAgo(((Listing)listing.fetchIfNeeded()).getKeyCreatedKey().toString()));
+            if (listing.getTitle() != null) {
+                tvListingTitle.setText(listing.getTitle());
+            }
             tvListingLocation.setText(u.getString("location"));
             // bind image
             ivListingProfileImg.setImageResource(R.drawable.ic_baseline_person_pin_24);

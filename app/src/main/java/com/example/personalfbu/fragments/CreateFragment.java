@@ -45,6 +45,7 @@ import java.util.Date;
 import java.util.List;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+import me.abhinay.input.CurrencyEditText;
 
 public class CreateFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
 
@@ -52,7 +53,8 @@ public class CreateFragment extends Fragment implements DatePickerDialog.OnDateS
     public final static int PICK_PHOTO_CODE = 2001;
     TextView tvComposeName, tvComposeEmail, tvComposeLocation, tvStartDate, tvEndDate;
     ImageView ivComposeProfileImg, iv1, iv2, iv3, iv4;
-    EditText etComposeBlurb;
+    EditText etComposeBlurb, etComposeTitle;
+    CurrencyEditText etComposePrice;
     Button btnComposeSubmit, btnStartDate, btnEndDate;
     ImageButton btnComposeImgs;
     ParseFile imgFile;
@@ -90,7 +92,8 @@ public class CreateFragment extends Fragment implements DatePickerDialog.OnDateS
         tvComposeName = view.findViewById(R.id.tvComposeName);
         ivComposeProfileImg = view.findViewById(R.id.ivComposeProfileImg);
         etComposeBlurb = view.findViewById(R.id.etComposeBlurb);
-        tvComposeEmail = view.findViewById(R.id.tvComposeEmail);
+        etComposeTitle = view.findViewById(R.id.etComposeTitle);
+        etComposePrice = view.findViewById(R.id.etComposePrice);
         tvStartDate = view.findViewById(R.id.tvStartDate);
         tvEndDate = view.findViewById(R.id.tvEndDate);
         tvComposeLocation = view.findViewById(R.id.tvComposeLocation);
@@ -105,7 +108,7 @@ public class CreateFragment extends Fragment implements DatePickerDialog.OnDateS
 
         // populate elements
         tvComposeName.setText(currentUser.getString("Name"));
-        tvComposeEmail.setText(currentUser.getEmail());
+        etComposePrice.setCurrency("$");
         tvComposeLocation.setText("Area: " + currentUser.getString("location"));
         imgFile = currentUser.getParseFile("profileImg");
         if (imgFile != null) {
@@ -179,7 +182,26 @@ public class CreateFragment extends Fragment implements DatePickerDialog.OnDateS
                     Toast.makeText(getContext(), "Start date must be before end date", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                saveListing(currentUser, blurb);
+                if(startDateResult.before(Calendar.getInstance().getTime())) {
+                    Toast.makeText(getContext(), "Dates cannot be before the current day", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                String title = etComposeTitle.getText().toString();
+                if(title.isEmpty()) {
+                    Toast.makeText(getContext(), "Please enter a title for this listing", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                try {
+                    double price = etComposePrice.getCleanDoubleValue();
+                    saveListing(currentUser, blurb, title, price);
+                }
+                catch (Exception e) {
+                    Toast.makeText(getContext(), "Please enter a price for this listing", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
+
             }
         });
     }
@@ -256,13 +278,15 @@ public class CreateFragment extends Fragment implements DatePickerDialog.OnDateS
         return image;
     }
 
-    private void saveListing(ParseUser currentUser, String blurb) {
+    private void saveListing(ParseUser currentUser, String blurb, String title, double price) {
         // create new listing and set attributes
         Listing newListing = new Listing();
         newListing.setUser(currentUser);
         newListing.setBlurb(blurb);
         newListing.setStartDate(startDateResult);
         newListing.setEndDate(endDateResult);
+        newListing.setTitle(title);
+        newListing.setPrice(price);
         if (choseImgs) {
             newListing.setImages(filesSelected);
         }
@@ -277,8 +301,11 @@ public class CreateFragment extends Fragment implements DatePickerDialog.OnDateS
                 } else {
                     // clear fields after posting
                     Toast.makeText(getContext(), "Successfully posted!", Toast.LENGTH_SHORT).show();
-                    tvStartDate.setText("");
+                    tvStartDate.setText("Start");
+                    tvEndDate.setText("End");
                     etComposeBlurb.setText("");
+                    etComposeTitle.setText("");
+                    etComposePrice.setText("");
                     iv1.setImageResource(R.drawable.ic_menu_gallery);
                     iv2.setImageResource(R.drawable.ic_menu_gallery);
                     iv3.setImageResource(R.drawable.ic_menu_gallery);

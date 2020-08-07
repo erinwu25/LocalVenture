@@ -12,22 +12,22 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="225dp"
-        android:text="Name"
         android:fontFamily="sans-serif-light"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:text="Name"
+        android:textColor="@color/colorPrimaryDark" />
 
     <EditText
         android:id="@+id/etComposeBlurb"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_below="@+id/ivComposeProfileImg"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="85dp"
         android:layout_marginEnd="20dp"
         android:backgroundTint="@color/colorPrimary"
         android:ems="10"
@@ -38,28 +38,17 @@
         android:textColorHint="@color/colorPrimary" />
 
     <TextView
-        android:id="@+id/tvComposeEmailTitle"
+        android:id="@+id/tvComposePriceTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/etComposeBlurb"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="30dp"
-        android:text="Email:"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="sans-serif-light"
-        android:textColor="@color/colorPrimaryDark"/>
-
-    <TextView
-        android:id="@+id/tvComposeEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/tvComposeEmailTitle"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="0dp"
-        android:layout_toEndOf="@+id/tvComposeEmailTitle"
-        android:text="TextView"
-        android:fontFamily="sans-serif-light"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:gravity="center_vertical"
+        android:text="Tour price (in USD): "
+        android:textColor="@color/colorPrimaryDark" />
 
     <TextView
         android:id="@+id/tvComposeBlurbTitle"
@@ -68,22 +57,22 @@
         android:layout_below="@+id/ivComposeProfileImg"
         android:layout_alignStart="@+id/etComposeBlurb"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="20dp"
-        android:text="A blurb about the adventures you offer"
+        android:layout_marginTop="65dp"
         android:fontFamily="sans-serif-light"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:text="A blurb about the adventures you offer"
+        android:textColor="@color/colorPrimaryDark" />
 
     <TextView
         android:id="@+id/tvComposeAvailabilityTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvComposeEmailTitle"
-        android:layout_alignStart="@+id/tvComposeEmailTitle"
+        android:layout_below="@+id/tvComposePriceTitle"
+        android:layout_alignStart="@+id/tvComposePriceTitle"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="30dp"
-        android:text="Availability"
+        android:layout_marginTop="25dp"
         android:fontFamily="sans-serif-light"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:text="Availability"
+        android:textColor="@color/colorPrimaryDark" />
 
     <TextView
         android:id="@+id/tvStartDate"
@@ -101,21 +90,21 @@
         android:id="@+id/btnComposeSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/iv2"
+        android:layout_below="@+id/iv1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/buttondesign"
         android:fontFamily="sans-serif-light"
+        android:text="Submit!"
         android:textAllCaps="false"
-        android:textColor="@color/colorWhite"
-        android:text="Submit!" />
+        android:textColor="@color/colorWhite" />
 
     <ImageView
         android:id="@+id/ivComposeProfileImg"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_alignTop="@+id/tvComposeName"
-        android:layout_marginTop="-20dp"
+        android:layout_marginTop="-10dp"
         android:layout_marginEnd="25dp"
         android:layout_toStartOf="@+id/tvComposeName"
         android:src="@android:drawable/ic_menu_compass" />
@@ -127,10 +116,10 @@
         android:layout_below="@+id/tvComposeName"
         android:layout_alignStart="@+id/tvComposeName"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="15dp"
-        android:text="Location"
+        android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-light"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:text="Location"
+        android:textColor="@color/colorPrimaryDark" />
 
     <ImageButton
         android:id="@+id/btnComposeImgs"
@@ -141,8 +130,8 @@
         android:layout_marginTop="15dp"
         android:layout_toEndOf="@+id/tvChooseImgTitle"
         android:background="@drawable/buttondesign"
-        android:textColor="@color/colorWhite"
-        android:src="@android:drawable/ic_menu_add" />
+        android:src="@android:drawable/ic_menu_add"
+        android:textColor="@color/colorWhite" />
 
     <TextView
         android:id="@+id/tvChooseImgTitle"
@@ -151,11 +140,11 @@
         android:layout_below="@+id/tvStartDate"
         android:layout_alignStart="@+id/btnStartDate"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        android:text="Select up to 4 images"
-        android:textSize="18sp"
+        android:layout_marginTop="25dp"
         android:fontFamily="sans-serif-light"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:text="Select up to 4 images"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp" />
 
     <ImageView
         android:id="@+id/iv1"
@@ -164,7 +153,7 @@
         android:layout_below="@+id/tvChooseImgTitle"
         android:layout_alignParentStart="true"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:src="@android:drawable/ic_menu_gallery" />
 
     <ImageView
@@ -250,5 +239,51 @@
         android:text="End Date"
         android:fontFamily="sans-serif-light"
         android:textColor="@color/colorPrimaryDark"/>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivComposeProfileImg"
+        android:layout_alignStart="@+id/tvComposeBlurbTitle"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-light"
+        android:text="Listing Title:"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <EditText
+        android:id="@+id/etComposeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="92dp"
+        android:layout_toEndOf="@+id/textView5"
+        android:backgroundTint="@color/colorPrimary"
+        android:ems="10"
+        android:fontFamily="sans-serif-light"
+        android:hint="Listing Title"
+        android:inputType="textPersonName"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="14sp" />
+
+    <me.abhinay.input.CurrencyEditText
+        android:id="@+id/etComposePrice"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_below="@+id/etComposeBlurb"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/tvComposePriceTitle"
+        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="sans-serif-light"
+        android:gravity="clip_vertical"
+        android:hint=" Enter a price for your tour "
+        android:inputType="number"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="14sp" />
 
 </RelativeLayout>

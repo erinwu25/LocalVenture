@@ -189,5 +189,6 @@
     <orderEntry type="library" name="Gradle: com.google.android.datatransport:transport-api:2.1.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: it.xabaras.android:recyclerview-swipedecorator:1.2.3@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.installreferrer:installreferrer:1.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: me.abhinay.input:currency-edittext:1.1@aar" level="project" />
   </component>
 </module>

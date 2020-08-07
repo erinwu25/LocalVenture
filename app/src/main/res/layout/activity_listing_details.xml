@@ -40,14 +40,14 @@
         android:id="@+id/tvDetailsName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/tvDetailsAvailability"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/ivDetailsImg"
-        android:text="Name"
         android:fontFamily="sans-serif-light"
+        android:text="Name"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="20sp" />
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/tvDetailsRating"
@@ -56,10 +56,10 @@
         android:layout_below="@+id/tvDetailsName"
         android:layout_alignStart="@+id/tvDetailsName"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="15dp"
-        android:text="Rating"
+        android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-light"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:text="Rating"
+        android:textColor="@color/colorPrimaryDark" />
 
     <TextView
         android:id="@+id/tvDetailsBlurbTitle"
@@ -89,23 +89,23 @@
         android:id="@+id/tvDetailsAvailability"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvDetailsRating"
-        android:layout_alignStart="@+id/tvDetailsRating"
+        android:layout_below="@+id/tvDetailsLocation"
+        android:layout_alignStart="@+id/tvDetailsTitle"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="15dp"
-        android:text="Availability"
+        android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-light"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:text="Availability"
+        android:textColor="@color/colorPrimaryDark" />
 
     <TextView
         android:id="@+id/tvDetailsLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvDetailsAvailability"
-        android:layout_alignStart="@+id/tvDetailsAvailability"
+        android:layout_below="@+id/tvDetailsTitle"
+        android:layout_alignStart="@+id/tvDetailsTitle"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="7dp"
         android:layout_marginEnd="10dp"
         android:fontFamily="sans-serif-light"
         android:text="Location"
@@ -115,13 +115,13 @@
         android:id="@+id/tvDetailsBioTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvDetailsLocation"
+        android:layout_below="@+id/tvDetailsRating"
         android:layout_alignStart="@+id/ivDetailsImg"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="15dp"
-        android:text="About this guide"
+        android:layout_marginTop="2dp"
         android:fontFamily="sans-serif-light"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:text="About this guide"
+        android:textColor="@color/colorPrimaryDark" />
 
     <TextView
         android:id="@+id/tvDetailsBio"
@@ -139,13 +139,13 @@
         android:id="@+id/tvDetailsContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvDetailsBlurb"
+        android:layout_below="@+id/tvDetailsPrice"
         android:layout_alignStart="@+id/tvDetailsBlurb"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="20dp"
-        android:text="Contact"
+        android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-light"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:text="Contact"
+        android:textColor="@color/colorPrimaryDark" />
 
     <Button
         android:id="@+id/btnDetailsViewReviews"
@@ -154,7 +154,7 @@
         android:layout_below="@+id/tvDetailsContact"
         android:layout_alignStart="@+id/tvDetailsContact"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/buttondesign"
         android:fontFamily="sans-serif-light"
         android:text="  View Reviews  "
@@ -165,15 +165,15 @@
         android:id="@+id/btnDetailsEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_alignStart="@+id/btnDetailsViewReviews"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="0dp"
         android:layout_marginBottom="40dp"
         android:background="@drawable/buttondesign"
         android:fontFamily="sans-serif-light"
+        android:text="Edit Listing"
         android:textAllCaps="false"
-        android:textColor="@color/colorWhite"
-        android:text="Edit Listing" />
+        android:textColor="@color/colorWhite" />
 
     <Button
         android:id="@+id/btnAddReview"
@@ -182,24 +182,25 @@
         android:layout_alignTop="@+id/btnDetailsViewReviews"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="0dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="30dp"
         android:background="@drawable/buttondesign"
         android:fontFamily="sans-serif-light"
+        android:text="Add Review"
         android:textAllCaps="false"
-        android:textColor="@color/colorWhite"
-        android:text="Add Review" />
+        android:textColor="@color/colorWhite" />
 
     <TextView
         android:id="@+id/tvDetailsDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvDetailsName"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="0dp"
-        android:text="Date"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="25dp"
         android:fontFamily="sans-serif-light"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:text="Date"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12sp" />
 
     <Button
         android:id="@+id/btnDetailsDelete"
@@ -207,7 +208,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/btnDetailsEdit"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginBottom="0dp"
         android:background="@drawable/buttondesign"
         android:fontFamily="sans-serif-light"
@@ -218,10 +219,8 @@
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
+        android:layout_height="20dp"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="1dp"
         android:layout_marginTop="0dp">
 
         <ImageView
@@ -231,7 +230,7 @@
             android:layout_below="@+id/btnDetailsViewReviews"
             android:layout_alignParentStart="true"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="410dp"
+            android:layout_marginTop="425dp"
             android:visibility="invisible"
             app:srcCompat="@drawable/ic_menu_gallery" />
 
@@ -241,7 +240,7 @@
             android:layout_height="70dp"
             android:layout_alignTop="@+id/pic1"
             android:layout_marginStart="120dp"
-            android:layout_marginTop="410dp"
+            android:layout_marginTop="425dp"
             android:layout_toEndOf="@+id/pic1"
             android:visibility="invisible"
             app:srcCompat="@drawable/ic_menu_gallery" />
@@ -252,7 +251,7 @@
             android:layout_height="70dp"
             android:layout_alignTop="@+id/pic2"
             android:layout_marginStart="210dp"
-            android:layout_marginTop="410dp"
+            android:layout_marginTop="425dp"
             android:layout_toEndOf="@+id/pic2"
             android:visibility="invisible"
             app:srcCompat="@drawable/ic_menu_gallery" />
@@ -263,7 +262,7 @@
             android:layout_height="70dp"
             android:layout_alignTop="@+id/pic3"
             android:layout_marginStart="300dp"
-            android:layout_marginTop="410dp"
+            android:layout_marginTop="425dp"
             android:layout_toEndOf="@+id/pic3"
             android:visibility="invisible"
             app:srcCompat="@drawable/ic_menu_gallery" />
@@ -271,14 +270,39 @@
     </FrameLayout>
 
     <TextView
-        android:id="@+id/chatTitle"
+    android:id="@+id/chatTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignTop="@+id/tvDetailsContact"
+    android:layout_marginStart="100dp"
+    android:layout_marginTop="0dp"
+    android:layout_toEndOf="@+id/tvDetailsContact"
+    android:fontFamily="sans-serif-light"
+    android:text="Chat"
+    android:textColor="@color/colorPrimaryDark" />
+
+    <TextView
+        android:id="@+id/tvDetailsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/tvDetailsContact"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="0dp"
-        android:layout_toEndOf="@+id/tvDetailsContact"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@+id/ivDetailsImg"
         android:fontFamily="sans-serif-light"
-        android:text="Chat"
+        android:text="Local Adventure"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDetailsPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDetailsBlurb"
+        android:layout_alignStart="@+id/tvDetailsBlurb"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="sans-serif-light"
+        android:text="Price"
         android:textColor="@color/colorPrimaryDark" />
 </RelativeLayout>

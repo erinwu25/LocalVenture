@@ -26,23 +26,23 @@
             android:id="@+id/tvListingName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="46dp"
-            android:layout_marginTop="15dp"
-            android:layout_toEndOf="@+id/ivListingProfileImg"
+            android:layout_below="@+id/tvListingLocation"
+            android:layout_alignStart="@+id/tvListingLocation"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="7dp"
             android:fontFamily="sans-serif-light"
             android:text="Name"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tvListingRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvListingLocation"
+            android:layout_below="@+id/tvListingName"
             android:layout_alignStart="@+id/tvListingName"
             android:layout_marginStart="0dp"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="15dp"
             android:fontFamily="sans-serif-light"
             android:text="Rating"
@@ -57,7 +57,7 @@
             android:layout_marginStart="33dp"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="20dp"
-            card_view:srcCompat="@android:drawable/ic_menu_compass" />
+            card_view:srcCompat="@drawable/ic_baseline_person_pin_24" />
 
         <TextView
             android:id="@+id/tvListingDate"
@@ -75,14 +75,29 @@
             android:id="@+id/tvListingLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvListingName"
-            android:layout_alignStart="@+id/tvListingName"
+            android:layout_below="@+id/tvListingTitle"
+            android:layout_alignStart="@+id/tvListingTitle"
             android:layout_marginStart="0dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="3dp"
             android:fontFamily="sans-serif-light"
             android:text="Location"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/colorPrimaryDark" />
+
+        <TextView
+            android:id="@+id/tvListingTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="0dp"
+            android:layout_toEndOf="@+id/ivListingProfileImg"
+            android:fontFamily="sans-serif-light"
+            android:text="Local adventure in"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            android:visibility="visible" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

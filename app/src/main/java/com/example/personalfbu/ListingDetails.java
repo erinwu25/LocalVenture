@@ -42,7 +42,8 @@ import java.util.Locale;
 
 public class ListingDetails extends AppCompatActivity implements ConfirmDeleteListing.ConfirmDeleteListingListener{
 
-    TextView tvDetailsName, tvDetailsRating, tvDetailsBlurb, tvDetailsBio, tvDetailsAvailability, tvDetailsLocation, tvDetailsContact, tvDetailsDate;
+    TextView tvDetailsName, tvDetailsRating, tvDetailsBlurb, tvDetailsBio,
+            tvDetailsAvailability, tvDetailsLocation, tvDetailsContact, tvDetailsDate, tvDetailsTitle, tvDetailsPrice;
     Button btnDetailsViewReviews, btnDetailsEdit, btnAddReview, btnDetailsDelete;
     Listing listing;
     ImageView ivDetailsImg, pic1, pic2, pic3, pic4, ivExpanded, btnToChat;
@@ -68,6 +69,8 @@ public class ListingDetails extends AppCompatActivity implements ConfirmDeleteLi
         tvDetailsLocation = findViewById(R.id.tvDetailsLocation);
         tvDetailsContact = findViewById(R.id.tvDetailsContact);
         tvDetailsDate = findViewById(R.id.tvDetailsDate);
+        tvDetailsTitle = findViewById(R.id.tvDetailsTitle);
+        tvDetailsPrice = findViewById(R.id.tvDetailsPrice);
         btnDetailsEdit = findViewById(R.id.btnDetailsEdit);
         btnDetailsViewReviews = findViewById(R.id.btnDetailsViewReviews);
         btnAddReview = findViewById(R.id.btnAddReview);
@@ -103,13 +106,22 @@ public class ListingDetails extends AppCompatActivity implements ConfirmDeleteLi
         }
 
         // fill in details
+        if (listing.getTitle() != null) { tvDetailsTitle.setText(listing.getTitle()); }
         tvDetailsName.setText(listingCreator.getString("Name"));
         tvDetailsBlurb.setText(listing.getBlurb());
         tvDetailsBio.setText(listingCreator.getString("Bio"));
-        tvDetailsLocation.setText("Location: "+ listingCreator.getString("location"));
+        tvDetailsLocation.setText(listingCreator.getString("location"));
         tvDetailsContact.setText("Contact: "+ listingCreator.getString("emailAddress"));
         tvDetailsDate.setText(getRelativeTimeAgo(listing.getKeyCreatedKey().toString()));
         tvDetailsAvailability.setText("Available "+ listing.getAvailability());
+        if (listing.getPrice() != null) {
+            double price = listing.getPrice();
+            DecimalFormat moneyFormat = new DecimalFormat("$0.00");
+            tvDetailsPrice.setText("Price: " + moneyFormat.format(price));
+        }
+        else { tvDetailsPrice.setText("Price: Free"); }
+
+
         queryRatings(listingCreator);
         ivDetailsImg.setImageResource(R.drawable.ic_baseline_person_pin_24);
         ParseFile imgFile = listingCreator.getParseFile("profileImg");
@@ -407,6 +419,8 @@ public class ListingDetails extends AppCompatActivity implements ConfirmDeleteLi
         if((data != null) && requestCode == 10) {
             tvDetailsBlurb.setText(data.getStringExtra("blurb"));
             tvDetailsAvailability.setText("Available " + data.getStringExtra("start") + " - " + data.getStringExtra("end"));
+            tvDetailsPrice.setText(data.getStringExtra("price"));
+            tvDetailsTitle.setText(data.getStringExtra("title"));
         }
     }
 
