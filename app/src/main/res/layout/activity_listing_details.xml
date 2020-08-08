@@ -8,13 +8,6 @@
     tools:context=".ListingDetails">
 
     <ImageView
-        android:id="@+id/ivExpanded"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible"
-        />
-
-    <ImageView
         android:id="@+id/btnToChat"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -219,7 +212,7 @@
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_marginTop="0dp">
 
@@ -227,8 +220,6 @@
             android:id="@+id/pic1"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_below="@+id/btnDetailsViewReviews"
-            android:layout_alignParentStart="true"
             android:layout_marginStart="30dp"
             android:layout_marginTop="425dp"
             android:visibility="invisible"
@@ -305,4 +296,11 @@
         android:fontFamily="sans-serif-light"
         android:text="Price"
         android:textColor="@color/colorPrimaryDark" />
+
+    <ImageView
+        android:id="@+id/ivExpanded"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/ic_menu_gallery" />
 </RelativeLayout>

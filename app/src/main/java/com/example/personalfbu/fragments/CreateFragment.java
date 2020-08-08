@@ -253,7 +253,7 @@ public class CreateFragment extends Fragment implements DatePickerDialog.OnDateS
                         break;
                 }
 
-            } else if (data.getClipData().getItemCount() > 4) {
+            } else if ((data.getClipData() != null) && data.getClipData().getItemCount() > 4) {
                 Toast.makeText(getContext(), "Please choose 4 images or less", Toast.LENGTH_LONG).show();
             }
         }
